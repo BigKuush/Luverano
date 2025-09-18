@@ -41,18 +41,8 @@ export const getAdsData = cache(async () => {
 });
 
 export const getProductsData = async () => {
-    try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/products`);
-            if (!res.ok) throw new Error('Failed to fetch products');
-            return res.json();
-        }
-        // В dev сразу возвращаем локальные данные без кеша,
-        // чтобы изменения в src/db/products.ts были видны мгновенно
-        return products;
-    } catch (error) {
-        throw new Error('Error in getProductsData: ' + (error instanceof Error ? error.message : String(error)));
-    }
+    // Всегда используем локальные данные для консистентности
+    return products;
 };
 
 export const getMenuData = cache(async () => {
@@ -82,16 +72,8 @@ export const getCategoriesData = cache(async () => {
 });
 
 export const getBlogData = cache(async () => {
-    try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/blogs`);
-            if (!res.ok) throw new Error('Failed to fetch blog data');
-            return res.json();
-        }
-        return blogData;
-    } catch (error) {
-        throw new Error('Error in getBlogData: ' + (error instanceof Error ? error.message : String(error)));
-    }
+    // Всегда используем локальные данные для консистентности
+    return blogData;
 });
 
 export const getFaqData = cache(async () => {

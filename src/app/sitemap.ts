@@ -1,14 +1,13 @@
 import { MetadataRoute } from 'next'
-import { getProductsData } from '@/lib/data'
-import { getBlogData } from '@/lib/data'
+import { products } from '@/db/products'
+import { blogData } from '@/db/blogData'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://luverano.ru'
   
-  // Получаем данные о продуктах и блогах
-  const { featuredProducts, topCollections } = await getProductsData() as any
+  // Используем локальные данные напрямую для статической генерации
+  const { featuredProducts, topCollections } = products
   const merged = [...(topCollections||[]), ...(featuredProducts||[])]
-  const blogData = await getBlogData()
 
   // Статические страницы
   const staticPages = [
@@ -61,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Страницы блога
   const blogPages = blogData.map((blog: any) => ({
     url: `${baseUrl}/blog/${blog.id}`,
-    lastModified: new Date(blog.date),
+    lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }))

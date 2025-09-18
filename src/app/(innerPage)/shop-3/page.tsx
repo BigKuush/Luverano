@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import PageHeader from '@/components/sections/pageHeader'
 import ProductsView from '@/components/sections/shopDetails/productView'
 import Newsletter from '@/components/sections/newsletter'
-// import InstagramGallery from '@/components/sections/instagramGallery'
 import { getProductsData } from '@/lib/data'
 import { MetadataRoute } from 'next'
 
@@ -41,7 +40,6 @@ const ShopThree = async () => {
                 data={featuredProducts.slice(0, 8)}
             />
             <Newsletter />
-            {/* <InstagramGallery /> */}
         </main>
 
     )
