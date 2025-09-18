@@ -17,8 +17,9 @@ export const metadata: Metadata = {
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
 
-const ProductDetailsOne = async ({ searchParams }: { searchParams: { id?: string } }) => {
-    const idParam = searchParams?.id || "1"
+const ProductDetailsOne = async ({ searchParams }: { searchParams: Promise<{ id?: string }> }) => {
+    const params = await searchParams;
+    const idParam = params?.id || "1"
     const numericId = Number(idParam)
     const { featuredProducts, topCollections } = await getProductsData() as any
     const all = Array.isArray(featuredProducts) && featuredProducts.length ? featuredProducts : []
