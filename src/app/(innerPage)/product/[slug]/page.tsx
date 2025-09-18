@@ -20,11 +20,12 @@ async function getProductBySlug(slug: string) {
     return bySlug || null
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const product = await getProductBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const product = await getProductBySlug(slug)
     const title = product?.seoTitle || product?.title || 'Товар'
     const description = product?.seoDescription || product?.summary || product?.description || ''
-    const url = `https://luverano.ru/product/${params.slug}`
+    const url = `https://luverano.ru/product/${slug}`
     const images = product?.thumbnail ? [{ url: product.thumbnail, width: 1200, height: 630, alt: product.title }] : []
     return {
         title,
