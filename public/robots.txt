@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://luverano.ru/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /checkout/
+Disallow: /login/
+
+# Allow important pages
+Allow: /
+Allow: /shop-3
+Allow: /blog
+Allow: /product-details
+Allow: /about
+Allow: /contacts
+Allow: /partners
