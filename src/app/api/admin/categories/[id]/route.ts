@@ -4,10 +4,11 @@ import { bitrix24 } from '@/lib/bitrix24'
 // GET - получение категории по ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const category = await bitrix24.getCategory(params.id)
+    const { id } = await context.params
+    const category = await bitrix24.getCategory(id)
     
     if (!category) {
       return NextResponse.json(
@@ -29,10 +30,11 @@ export async function GET(
 // PUT - обновление категории
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const categoryData = await request.json()
+    const { id } = await context.params
     
     // Валидация обязательных полей
     if (!categoryData.name) {
@@ -42,7 +44,7 @@ export async function PUT(
       )
     }
 
-    const updatedCategory = await bitrix24.updateCategory(params.id, categoryData)
+    const updatedCategory = await bitrix24.updateCategory(id, categoryData)
     
     if (updatedCategory) {
       return NextResponse.json({
@@ -68,10 +70,11 @@ export async function PUT(
 // DELETE - удаление категории
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await bitrix24.deleteCategory(params.id)
+    const { id } = await context.params
+    const success = await bitrix24.deleteCategory(id)
     
     if (success) {
       return NextResponse.json({

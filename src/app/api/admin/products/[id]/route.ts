@@ -5,18 +5,19 @@ import { products } from '@/db/products'
 // GET - получение товара по ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await context.params
     // 1) Сначала пытаемся получить товар из Битрикс24
-    const product = await bitrix24.getProduct(params.id)
+    const product = await bitrix24.getProduct(id)
     if (product) {
       return NextResponse.json(product)
     }
 
     // 2) Фолбэк на локальные данные (когда работаем оффлайн)
     const allLocal = [...(products.topCollections as any[]), ...(products.featuredProducts as any[])]
-    const rawId = params.id.startsWith('local-') ? params.id.replace(/^local-/, '') : params.id
+    const rawId = id.startsWith('local-') ? id.replace(/^local-/, '') : id
     const local = allLocal.find((p: any) => String(p.id) === String(rawId))
     if (local) {
       return NextResponse.json({
@@ -54,10 +55,11 @@ export async function GET(
 // PUT - обновление товара
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const productData = await request.json()
+    const { id } = await context.params
     
     // Валидация обязательных полей
     if (!productData.title || !productData.price) {
@@ -67,7 +69,7 @@ export async function PUT(
       )
     }
 
-    const updatedProduct = await bitrix24.updateProduct(params.id, productData)
+    const updatedProduct = await bitrix24.updateProduct(id, productData)
     
     if (updatedProduct) {
       return NextResponse.json({
@@ -93,10 +95,11 @@ export async function PUT(
 // DELETE - удаление товара
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = await bitrix24.deleteProduct(params.id)
+    const { id } = await context.params
+    const success = await bitrix24.deleteProduct(id)
     
     if (success) {
       return NextResponse.json({
