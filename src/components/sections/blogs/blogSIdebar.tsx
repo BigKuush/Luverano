@@ -8,33 +8,33 @@ import { Search } from '@/lib/icon'
 const latestPosts = [
     {
         "id": 1,
-        "title": "Modern home furniture",
+        "title": "Как выбрать идеальную мебель для террасы",
         "thumbnail": "/images/blog-sidebar/img-1.webp",
-        "date": "24 May 2025"
+        "date": "20 янв 2025"
     },
     {
         "id": 2,
-        "title": "Modern Tolik Chair",
+        "title": "Тренды в оформлении загородных пространств 2025",
         "thumbnail": "/images/blog-sidebar/img-5.webp",
-        "date": "24 May 2025"
+        "date": "14 авг 2025"
     },
     {
         "id": 3,
-        "title": "Dining Table With Chair",
+        "title": "Уход за премиальной садовой мебелью",
         "thumbnail": "/images/blog-sidebar/img-4.webp",
-        "date": "24 May 2025"
+        "date": "18 авг 2025"
     },
     {
         "id": 4,
-        "title": "Cherie Chair With Fabric",
+        "title": "Создаем уютную зону отдыха в саду",
         "thumbnail": "/images/blog-sidebar/img-3.webp",
-        "date": "24 May 2025"
+        "date": "15 июн 2025"
     },
     {
         "id": 5,
-        "title": "Large Double Sofa",
+        "title": "Выбираем мебель для большой террасы",
         "thumbnail": "/images/blog-sidebar/img-2.webp",
-        "date": "24 May 2025"
+        "date": "18 июн 2025"
     },
 ]
 
