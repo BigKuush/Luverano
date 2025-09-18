@@ -19,7 +19,7 @@ const MegaMenu = async ({ data }: { data: MegamenuType[] }) => {
                     return (
                         <div key={id}>
                             {
-                                menus.map(({ id, items, title }) => {
+                                menus?.map(({ id, items, title }) => {
                                     return (
                                         <div key={id} className='px-6 lg:py-7.5 py-3'>
                                             <b className='text-secondary-foreground font-medium block mb-3 capitalize'>{title}</b>

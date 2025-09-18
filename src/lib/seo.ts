@@ -74,7 +74,7 @@ export const getPageMetadata = (page: string, data?: any) => {
     }
   }
   
-  return metadata[page] || metadata.home
+  return metadata[page as keyof typeof metadata] || metadata.home
 }
 
 // Open Graph теги

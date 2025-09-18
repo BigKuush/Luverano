@@ -146,7 +146,7 @@ export const detectRegion = (ip: string) => {
     '93.': 'krasnodar',
     '95.': 'yekaterinburg',
     '195.': 'novosibirsk',
-    '95.': 'chechnya',
+    '196.': 'chechnya',
     '185.': 'dagestan'
   }
 

@@ -2,6 +2,15 @@ export type MegamenuType = {
     id: number | string;
     label: string;
     path: string;
+    menus?: {
+        id: number | string;
+        title: string;
+        items: {
+            id: number | string;
+            label: string;
+            path: string;
+        }[];
+    }[];
 };
 
 export type menuType = {

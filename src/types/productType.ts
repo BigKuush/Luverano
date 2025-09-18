@@ -30,6 +30,10 @@ export type ProductType = {
     "summary"?: string,
     "materials"?: string,
     "packageInfo"?: string,
+    // SEO поля
+    "seoTitle"?: string,
+    "seoDescription"?: string,
+    "seoKeywords"?: string,
     // Видео товара
     "videoUrl"?: string,
     // FAQ
