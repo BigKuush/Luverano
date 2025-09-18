@@ -16,11 +16,7 @@ const baseUrl = 'https://furnisy.vercel.app';
 
 export const getHeroData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/hero-content`);
-            if (!res.ok) throw new Error('Failed to fetch hero data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return heroData;
     } catch (error) {
         throw new Error('Error in getHeroData: ' + (error instanceof Error ? error.message : String(error)));

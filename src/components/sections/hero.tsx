@@ -42,7 +42,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                                                 duration: 0.3,
                                                 delay: isActive ? 0.5 : 0,
                                             }}
-                                            className='text-[clamp(2.25rem,1.3269rem+4.1026vw,6.25rem)] leading-[115%] max-w-[810px] text-secondary-foreground font-light mb-2.5'
+                                            className='text-[clamp(1.75rem,1.1rem+3.2vw,4.5rem)] leading-[115%] max-w-[810px] text-secondary-foreground font-light mb-2.5'
                                         >
                                             {title}
                                         </motion.h1>
@@ -53,7 +53,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                                                 duration: 0.3,
                                                 delay: isActive ? 0.7 : 0,
                                             }}
-                                            className='max-w-[570px] text-[22px] text-secondary-foreground'
+                                            className='max-w-[570px] text-[18px] text-secondary-foreground'
                                         >
                                             {description}
                                         </motion.p>
