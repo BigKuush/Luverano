@@ -18,7 +18,7 @@ export default function OrderModal({ isOpen, onClose, order, products, onSave, d
       email: '',
       phone: ''
     },
-    items: [],
+    items: [] as any[],
     notes: ''
   })
 
