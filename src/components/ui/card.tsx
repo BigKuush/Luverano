@@ -70,8 +70,8 @@ export function CardImg({ src, height, width, className, href, alt }: { src: str
             src={currentImage || src}
             height={height}
             width={width}
-            sizes='100vw'
-            style={{ width: "100%", height: "auto" }}
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
             alt={alt || 'изображение товара'}
             className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
           />
@@ -81,8 +81,8 @@ export function CardImg({ src, height, width, className, href, alt }: { src: str
           src={currentImage || src}
           height={height}
           width={width}
-          sizes='100vw'
-          style={{ width: "100%", height: "auto" }}
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
           alt={alt || 'изображение товара'}
           className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
         />
@@ -268,7 +268,7 @@ export function CardCategory({ path, children, className }: { children: ReactNod
 
 export function CardTitle({ children, className, path }: { children: ReactNode, className?: string, path?: string, }) {
   return (
-    <Link href={path || "#"} className={cn('line-clamp-1 text-lg font-medium capitalize text-secondary-foreground hover:text-gray-1-foreground transition-all duration-500', className)}>
+    <Link href={path || "#"} className={cn('line-clamp-1 text-lg font-medium capitalize text-secondary-foreground hover:text-gray-1-foreground transition-all duration-500', className)} style={{ fontSize: '18px', lineHeight: '1.4' }}>
       {children}
     </Link>
   )
@@ -293,13 +293,13 @@ export function CardPriceEnhanced({ price, discountPercentage, className }: Card
   const finalPrice = discountPercentage ? price - (price * discountPercentage / 100) : price;
 
   return (
-    <p className={cn('font-normal mt-px text-gray-1-foreground', className)}>
+    <p className={cn('font-normal mt-px text-gray-1-foreground', className)} style={{ fontSize: '16px', lineHeight: '1.4' }}>
       {discountPercentage ? (
-        <del className="text-gray-3-foreground font-normal">
+        <del className="text-gray-3-foreground font-normal" style={{ fontSize: '14px' }}>
           {currencyFormatter.format(price, { code: "RUB", thousand: ' ', precision: 0 })}
         </del>
       ) : null}{" "}
-      <span>
+      <span style={{ fontSize: '18px', fontWeight: '600' }}>
         {currencyFormatter.format(finalPrice, { code: "RUB", thousand: ' ', precision: 0 })}
       </span>
     </p>

@@ -13,7 +13,7 @@ const FeaturedProducts = async () => {
         <section className="bg-home-bg-1 lg:pt-25 lg:pb-25 pt-15 pb-15">
             <div className="container">
                 <Title>Популярное</Title>
-                <p className="text-gray-1-foreground mt-3 leading-[166.667%]">
+                <p className="text-gray-1-foreground mt-3 leading-[166.667%]" style={{ fontSize: '16px', lineHeight: '1.67' }}>
                     Откройте для себя премиальную мебель для загородной жизни
                 </p>
                 <div className="mt-10">
@@ -22,6 +22,7 @@ const FeaturedProducts = async () => {
                         <Link
                             href={"/shop-3"}
                             className="text-gray-1-foreground lg:text-xl text-lg border-b border-b-primary mt-2.5 md:mt-0 inline-block hover:border-b-primary hover:text-secondary-foreground duration-500"
+                            style={{ fontSize: '18px', lineHeight: '1.4' }}
                         >
                             Смотреть все
                         </Link>
