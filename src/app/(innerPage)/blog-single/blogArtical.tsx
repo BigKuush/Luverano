@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import BlogSIdebar from '@/components/sections/blogs/blogSIdebar'
-import { Facebook, Instagram, Linkedin, Twitter } from '@/lib/icon'
 
 const BlogArtical = () => {
     return (
@@ -60,15 +59,6 @@ const BlogArtical = () => {
                                     Декор
                                 </Link>
                             </div>
-                        </div>
-                        <div className='flex items-center gap-2.5'>
-                            <strong className='lg:text-2xl text-xl font-medium text-gray-1-foreground'>Поделиться:</strong>
-                            <ul className='flex gap-2.5'>
-                                <li><Link href={"#"} aria-label='facebook' className='w-8 h-8 rounded-full flex justify-center items-center border border-[#807E7D] text-gray-1-foreground hover:bg-primary hover:text-white transition-all duration-500 '><Facebook className='size-4' /></Link></li>
-                                <li><Link href={"#"} aria-label='twitter' className='w-8 h-8 rounded-full flex justify-center items-center border border-[#807E7D] text-gray-1-foreground hover:bg-primary hover:text-white transition-all duration-500 '><Twitter className='size-4' /></Link></li>
-                                <li><Link href={"#"} aria-label='linkedin' className='w-8 h-8 rounded-full flex justify-center items-center border border-[#807E7D] text-gray-1-foreground hover:bg-primary hover:text-white transition-all duration-500 '><Linkedin className='size-4' /></Link></li>
-                                <li><Link href={"#"} aria-label='instagram' className='w-8 h-8 rounded-full flex justify-center items-center border border-[#807E7D] text-gray-1-foreground hover:bg-primary hover:text-white transition-all duration-500 '><Instagram className='size-4' /></Link></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
