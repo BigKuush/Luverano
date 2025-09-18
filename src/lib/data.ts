@@ -12,7 +12,7 @@ import { testimonialData } from "@/db/testimonialsData";
 import { heroData } from "@/db/heroData";
 import { products } from "@/db/products";
 
-const baseUrl = 'https://furnisy.vercel.app';
+const baseUrl = 'https://luverano.vercel.app';
 
 export const getHeroData = cache(async () => {
     try {

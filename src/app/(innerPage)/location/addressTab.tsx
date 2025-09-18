@@ -9,34 +9,10 @@ export const addressList = [
     {
         id: 1,
         thumbnail: "/images/locations/img-1.webp",
-        showroomName: "Furnisy Furniture New York",
-        address: "13th Street 47 W 13th St, New York.",
-        lat_lng: [40.735501, -73.9953685] as LatLngTuple,
-        phoneNumber: "+1 559-278-4240",
-    },
-    {
-        id: 2,
-        thumbnail: "/images/locations/img-2.webp",
-        showroomName: "Furnisy Furniture Austin",
-        address: "301 W. Second St., Austin.",
-        lat_lng: [30.2650624, -97.7500382] as LatLngTuple,
-        phoneNumber: "+1 559-278-4240",
-    },
-    {
-        id: 3,
-        thumbnail: "/images/locations/img-3.webp",
-        showroomName: "Furnisy Furniture Phoenix",
-        address: "200 W. Washington St. Phoenix.",
-        lat_lng: [33.4489411, -112.0798297] as LatLngTuple,
-        phoneNumber: "+1 559-278-4240",
-    },
-    {
-        id: 4,
-        thumbnail: "/images/locations/img-4.webp",
-        showroomName: "Furnisy Furniture Chicago",
-        address: "City Hall 121 N. LaSalle Street Chicago.",
-        lat_lng: [41.8838268, -87.6346527] as LatLngTuple,
-        phoneNumber: "+1 559-278-4240",
+        showroomName: "Luverano Москва",
+        address: "Москва, рабочий посёлок Заречье, Торговая ул., с2",
+        lat_lng: [55.7558, 37.6176] as LatLngTuple,
+        phoneNumber: "+7 (915) 401-57-54",
     },
 ];
 
