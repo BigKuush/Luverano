@@ -47,8 +47,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 }
 
-const ProductPage = async ({ params }: { params: { slug: string } }) => {
-    const product = await getProductBySlug(params.slug)
+const ProductPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+    const { slug } = await params
+    const product = await getProductBySlug(slug)
     if (!product) {
         return <main className='container lg:mt-25 mt-15'><p>Товар не найден</p></main>
     }
