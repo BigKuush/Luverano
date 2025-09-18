@@ -257,7 +257,7 @@ function CategoryModal({ category, onClose, onSave }: {
   const [formData, setFormData] = useState({
     name: category?.NAME || '',
     description: category?.DESCRIPTION || '',
-    active: category?.ACTIVE === 'Y' || true,
+    active: category?.ACTIVE === 'Y' || true as boolean,
     sort: category?.SORT || 100,
     picture: category?.PICTURE || '',
     seoTitle: category?.SEO_TITLE || '',
@@ -333,8 +333,8 @@ function CategoryModal({ category, onClose, onSave }: {
                 <input
                   type="checkbox"
                   id="active"
-                  checked={formData.active}
-                  onChange={(e) => setFormData({ ...formData, active: e.target.checked })}
+                  checked={!!formData.active}
+                  onChange={(e) => setFormData({ ...formData, active: !!e.target.checked })}
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
                 <label htmlFor="active" className="ml-2 block text-sm text-gray-700">
