@@ -32,7 +32,7 @@ const FeaturedProducts = async () => {
                         {featuredProducts.filter((p) => p.filter === 'Популярное').map((prd) => (
                             <Card key={prd.id}>
                                 <CardHeader>
-                                    <CardImg src={prd.thumbnail} height={500} width={420} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} />
+                                    <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} />
                                     <CardLabel isLabel={prd.label ? prd.label : false}>{prd.label}</CardLabel>
                                     <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                     <CardIcons product={prd} />

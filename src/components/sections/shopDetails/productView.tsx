@@ -68,7 +68,7 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                             return (
                                                 <Card key={prd.id}>
                                                     <CardHeader>
-                                                        <CardImg src={prd.thumbnail} height={500} width={420} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} />
+                                                        <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} />
                                                         <CardLabel isLabel={prd.label ? prd.label : false}>{prd.label}</CardLabel>
                                                         <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                                         <CardIcons product={prd} />
@@ -92,7 +92,7 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                                 <div key={id} className='grid sm:grid-cols-[32.2%_auto] grid-cols-1 items-center gap-7.5'>
                                                     <div className='bg-[#F2F2F2] rounded-xl'>
                                                         <Link href={`/product/${encodeURIComponent(String(title).toLowerCase().replace(/\s+/g,'-'))}`} aria-label='product-image-link'>
-                                                            <Image width={341} height={400} sizes='100vw' src={thumbnail} alt="img" className='w-full rounded-xl' />
+                                                            <Image width={280} height={320} sizes='100vw' src={thumbnail} alt="img" className='w-full rounded-xl' />
                                                         </Link>
                                                     </div>
                                                     <div>

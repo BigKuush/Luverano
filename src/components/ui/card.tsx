@@ -268,7 +268,7 @@ export function CardCategory({ path, children, className }: { children: ReactNod
 
 export function CardTitle({ children, className, path }: { children: ReactNode, className?: string, path?: string, }) {
   return (
-    <Link href={path || "#"} className={cn('line-clamp-1 text-lg font-medium capitalize text-secondary-foreground hover:text-gray-1-foreground transition-all duration-500', className)} style={{ fontSize: '18px', lineHeight: '1.4' }}>
+    <Link href={path || "#"} className={cn('line-clamp-1 text-base font-medium capitalize text-secondary-foreground hover:text-gray-1-foreground transition-all duration-500', className)} style={{ fontSize: '16px', lineHeight: '1.4' }}>
       {children}
     </Link>
   )
@@ -293,13 +293,13 @@ export function CardPriceEnhanced({ price, discountPercentage, className }: Card
   const finalPrice = discountPercentage ? price - (price * discountPercentage / 100) : price;
 
   return (
-    <p className={cn('font-normal mt-px text-gray-1-foreground', className)} style={{ fontSize: '16px', lineHeight: '1.4' }}>
+    <p className={cn('font-normal mt-px text-gray-1-foreground', className)} style={{ fontSize: '14px', lineHeight: '1.4' }}>
       {discountPercentage ? (
-        <del className="text-gray-3-foreground font-normal" style={{ fontSize: '14px' }}>
+        <del className="text-gray-3-foreground font-normal" style={{ fontSize: '12px' }}>
           {currencyFormatter.format(price, { code: "RUB", thousand: ' ', precision: 0 })}
         </del>
       ) : null}{" "}
-      <span style={{ fontSize: '18px', fontWeight: '600' }}>
+      <span style={{ fontSize: '16px', fontWeight: '600' }}>
         {currencyFormatter.format(finalPrice, { code: "RUB", thousand: ' ', precision: 0 })}
       </span>
     </p>

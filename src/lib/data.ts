@@ -47,11 +47,7 @@ export const getProductsData = async () => {
 
 export const getMenuData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/menu`);
-            if (!res.ok) throw new Error('Failed to fetch menu data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return menuList;
     } catch (error) {
         throw new Error('Error in getMenuData: ' + (error instanceof Error ? error.message : String(error)));
