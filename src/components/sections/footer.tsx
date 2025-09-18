@@ -37,7 +37,7 @@ const Footer = () => {
                 </div>
                 <div className='mt-10 mb-10 border-t border-[#E5E2E1]'></div>
                 <div className='flex items-center justify-between flex-col lg:flex-row gap-5'>
-                    <p className='text-[#4F4F59] text-base leading-[170%]'>© {new Date().getFullYear()}, Все права защищены | Luverano</p>
+                    <p className='text-[#4F4F59] text-base leading-[170%]'>© {new Date().getFullYear()}. Все права защищены | Luverano</p>
                     <div className='flex items-center gap-2.5'>
                     </div>
                 </div>
