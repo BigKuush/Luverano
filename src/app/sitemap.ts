@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Страницы блога
-  const blogPages = blogData.map((blog) => ({
+  const blogPages = blogData.map((blog: any) => ({
     url: `${baseUrl}/blog/${blog.id}`,
     lastModified: new Date(blog.date),
     changeFrequency: 'monthly' as const,
