@@ -35,7 +35,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                         return (
                             <SwiperSlide key={id} style={{ backgroundImage: `url(${thumbnail})` }} className={`hero-slide bg-gradient-to-l from-[rgba(0,0,0,0.3)_0%] via-[rgba(0,0,0,0.1)_50%] to-[rgba(0,0,0,0.4)_100%]`}>
                                 {({ isActive }) => (
-                                    <div className='container lg:pt-[190px] sm:pt-[140px] pt-30 xl:pb-[193px] lg:pb-[170px] pb-[150px]'>
+                                    <div className='container lg:pt-[190px] sm:pt-[140px] pt-20 xl:pb-[193px] lg:pb-[170px] pb-[80px]'>
                                         <motion.h1
                                             initial={{ y: 90, opacity: 0 }}
                                             animate={isActive ? { y: 0, opacity: 1 } : { y: 90, opacity: 0 }}
