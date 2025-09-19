@@ -63,17 +63,15 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
   const currentImage = context ? context.currentImage : '';
 
   return (
-    <div className={cn('overflow-hidden rounded-xl bg-[#F2F2F2] flex items-center justify-center', className)} style={{ height: `${height}px` }}>
+    <div className={cn('overflow-hidden rounded-xl relative', className)} style={{ height: `${height}px` }}>
       {href ? (
-        <Link href={href} aria-label='product-image-link' className="w-full h-full flex items-center justify-center">
+        <Link href={href} aria-label='product-image-link' className="block w-full h-full">
           <Image
             src={currentImage || src}
-            height={height}
-            width={width}
+            fill
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
             alt={alt || 'изображение товара'}
-            className='hover:scale-110 transition-all duration-700 rounded-xl'
+            className='object-cover hover:scale-110 transition-all duration-700'
             priority={priority}
             loading={priority ? 'eager' : 'lazy'}
             placeholder="blur"
