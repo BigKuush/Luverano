@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Link from 'next/link'
-import { Heart, IcHome, ShopBug, User } from '@/lib/icon'
+import { IcHome, ShopBug, User } from '@/lib/icon'
 import { usePathname } from 'next/navigation'
 
 const MobileNavbar = () => {
@@ -15,17 +15,16 @@ const MobileNavbar = () => {
             <div className='flex justify-between items-center'>
                 <Link href={"/"} className={`flex flex-col items-center ${currrentPathname === "/" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
                     <IcHome />
-                    <span className='text-base inline-block mt-0.5'>Home</span>
-                </Link>
-                <Link href={"/wishlist"} className={`flex flex-col items-center ${currrentPathname === "/wishlist" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
-                    <Heart className='w-[27px] h-[25px]' />
-                    <span className='text-base inline-block mt-0.5'>Wishlist</span>
+                    <span className='text-base inline-block mt-0.5'>Главная</span>
                 </Link>
                 <Link href={"/shop"} className={`flex flex-col items-center ${currrentPathname === "/shop" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
                     <ShopBug className='size-6' />
-                    <span className='text-base inline-block mt-0.5'>Shop</span>
+                    <span className='text-base inline-block mt-0.5'>Каталог</span>
                 </Link>
-                {/* Убрали ссылку на личный кабинет */}
+                <Link href={"/blog"} className={`flex flex-col items-center ${currrentPathname === "/blog" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
+                    <User className='size-6' />
+                    <span className='text-base inline-block mt-0.5'>Блог</span>
+                </Link>
             </div>
         </div>
     )
