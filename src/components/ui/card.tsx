@@ -58,12 +58,12 @@ export function CardHeader({ children, className }: CardPropsType) {
   )
 }
 
-export function CardImg({ src, height, width, className, href, alt, priority = false }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string, priority?: boolean }) {
+export function CardImg({ src, height, width, className, href, alt, priority = false, videoUrl }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string, priority?: boolean, videoUrl?: string }) {
   const context = useContext(CardContext);
   const currentImage = context ? context.currentImage : '';
 
   return (
-    <div className={cn('overflow-hidden rounded-xl relative', className)} style={{ height: `${height}px` }}>
+    <div className={cn('overflow-hidden rounded-xl relative group', className)} style={{ height: `${height}px` }}>
       {href ? (
         <Link href={href} aria-label='product-image-link' className="block w-full h-full">
           <Image
@@ -81,17 +81,34 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
       ) : (
         <Image
           src={currentImage || src}
-          height={height}
-          width={width}
+          fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
           alt={alt || 'изображение товара'}
-          className='hover:scale-110 transition-all duration-700 rounded-xl'
+          className='object-cover hover:scale-110 transition-all duration-700'
           priority={priority}
           loading={priority ? 'eager' : 'lazy'}
           placeholder="blur"
           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
+      )}
+      
+      {/* Кнопка видео */}
+      {videoUrl && (
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+          <button 
+            className="w-16 h-16 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-all duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              // Открытие видео в новой вкладке
+              window.open(videoUrl, '_blank');
+            }}
+          >
+            <svg className="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </button>
+        </div>
       )}
     </div>
   )
