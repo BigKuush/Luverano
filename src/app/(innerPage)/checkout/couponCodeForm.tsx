@@ -7,9 +7,9 @@ const CouponCodeForm = () => {
     return (
         <Dialog>
             <div className='text-gray-1-foreground mt-2'>
-                Have a coupon? {' '}
+                Есть промокод? {' '}
                 <DialogTrigger className='text-secondary-foreground multiline-hover'>
-                    Click here to enter your code
+                    Введите код здесь
                 </DialogTrigger>
             </div>
 
@@ -17,10 +17,10 @@ const CouponCodeForm = () => {
                 <DialogTitle className='hidden'></DialogTitle>
                 <DialogDescription className='hidden'></DialogDescription>
                 <div className='border border-black bg-background p-7.5'>
-                    <p className='text-base text-gray-3-foreground'>If you have a coupon code, please apply it below</p>
+                    <p className='text-base text-gray-3-foreground'>Если у вас есть промокод, введите его ниже</p>
                     <div className='w-full flex items-center gap-2.5 mt-5'>
-                        <Input type={"text"} placeholder={"Coupon code"} className={"border-gray px-5 py-[14px]"} />
-                        <Button  className="lg:px-6 lg:py-3 lg:text-lg">Apply coupon</Button>
+                        <Input type={"text"} placeholder={"Промокод"} className={"border-gray px-5 py-[14px]"} />
+                        <Button  className="lg:px-6 lg:py-3 lg:text-lg">Применить</Button>
                     </div>
                 </div>
             </DialogContent>

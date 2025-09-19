@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -7,8 +8,16 @@ import { getGalleryData } from '@/lib/data'
 import Title from '@/components/ui/title'
 import { GalleryType } from '@/db/galleryData'
 
-const InstagramGallery = async () => {
-    const galleryData: GalleryType[] = await getGalleryData();
+const InstagramGallery = () => {
+    const [galleryData, setGalleryData] = useState<GalleryType[]>([]);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getGalleryData();
+            setGalleryData(data);
+        };
+        fetchData();
+    }, []);
     return (
         <section className='lg:pt-25 pt-15 lg:pb-25 pb-15'>
             <div className='container'>
