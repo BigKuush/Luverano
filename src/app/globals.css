@@ -222,17 +222,18 @@ body {
     transition: width 0.5s ease-in-out;
   }
 
-  /* Hero section fixed height and aspect ratio */
+  /* Hero section standardized sizing */
   .hero-slide {
     height: 100vh;
     min-height: 600px;
-    aspect-ratio: 16/9;
+    max-height: 800px;
   }
 
   @media (max-width: 768px) {
     .hero-slide {
       height: 70vh;
       min-height: 500px;
+      max-height: 600px;
     }
   }
 }

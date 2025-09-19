@@ -12,7 +12,7 @@ import { HeroDataType } from '@/db/heroData'
 
 const Hero = ({ data }: { data: HeroDataType[] }) => {
     return (
-        <section className="h-[100vh] min-h-[600px]">
+        <section>
             <Swiper
                 grabCursor
                 loop
@@ -28,7 +28,6 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                     bulletActiveClass: 'hero-pagination-bullet-active',
                 }}
                 modules={[Autoplay, Pagination]}
-                className="h-full"
             >
                 {
                     data.map(({ description, id, thumbnail, title }) => {
