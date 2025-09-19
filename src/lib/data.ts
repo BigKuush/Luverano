@@ -25,11 +25,7 @@ export const getHeroData = cache(async () => {
 
 export const getAdsData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/ads`);
-            if (!res.ok) throw new Error('Failed to fetch ads data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return adsData;
     } catch (error) {
         throw new Error('Error in getAdsData: ' + (error instanceof Error ? error.message : String(error)));
@@ -52,11 +48,7 @@ export const getMenuData = cache(async () => {
 
 export const getCategoriesData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/categories`);
-            if (!res.ok) throw new Error('Failed to fetch categories data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return categoriesOneData;
     } catch (error) {
         throw new Error('Error in getCategoriesData: ' + (error instanceof Error ? error.message : String(error)));
@@ -70,11 +62,7 @@ export const getBlogData = cache(async () => {
 
 export const getFaqData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/faq`);
-            if (!res.ok) throw new Error('Failed to fetch FAQ data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return faqData;
     } catch (error) {
         throw new Error('Error in getFaqData: ' + (error instanceof Error ? error.message : String(error)));
