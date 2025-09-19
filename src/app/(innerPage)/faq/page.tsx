@@ -13,7 +13,11 @@ export const metadata: Metadata = {
 const Faq = () => {
     return (
         <main>
-            <PageHeader pageTitle='FAQ' currentPage='Faq' />
+            <PageHeader 
+                pageTitle='Часто задаваемые вопросы' 
+                currentPage='FAQ' 
+                bgImageUrl='/images/kits/sonata/1.jpg'
+            />
             <FaqSection />
             <Newsletter />
             <InstagramGallery />

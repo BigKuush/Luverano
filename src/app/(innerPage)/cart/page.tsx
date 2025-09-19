@@ -15,7 +15,13 @@ export const metadata: Metadata = {
 const VIewCart = () => {
     return (
         <main>
-            <PageHeader currentPage='Корзина' pageTitle='Корзина' breadcrumbLink='shop-3' breadcrumbLabel='Каталог' />
+            <PageHeader 
+                currentPage='Корзина' 
+                pageTitle='Корзина' 
+                breadcrumbLink='shop-3' 
+                breadcrumbLabel='Каталог'
+                bgImageUrl='/images/kits/valiente/1.jpg'
+            />
             <div className='container lg:pt-25 lg:pb-25 pt-15 pb-15'>
                 <div className='grid xl:grid-cols-[auto_23.944%] lg:grid-cols-[auto_30%] grid-cols-1 gap-7.5 items-start'>
                     <ProductsCartTable />

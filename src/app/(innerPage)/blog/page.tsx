@@ -18,7 +18,11 @@ const BlogOne = async () => {
     const blogData: BlogType[] = await getBlogData();
     return (
         <main>
-            <PageHeader pageTitle='Блог' currentPage='Блог' />
+            <PageHeader 
+                pageTitle='Блог' 
+                currentPage='Блог' 
+                bgImageUrl='/images/kits/valencia/1.jpg'
+            />
             <div className='container lg:pt-25 lg:pb-25 pt-15 pb-15'>
                 <div className='grid sm:grid-cols-2 grid-cols-1 lg:gap-x-7.5 gap-y-7.5 gap-x-5'>
                     {

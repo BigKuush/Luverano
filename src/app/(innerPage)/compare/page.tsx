@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 const Compare = () => {
   return (
     <main>
-      <PageHeader currentPage='Compare' pageTitle='Compare' breadcrumbLink='shop-1' breadcrumbLabel='Shop' />
+      <PageHeader 
+          currentPage='Сравнение' 
+          pageTitle='Сравнение товаров' 
+          breadcrumbLink='shop-3' 
+          breadcrumbLabel='Каталог'
+          bgImageUrl='/images/kits/montoro/1.jpg'
+      />
       <CompareTable />
       <Newsletter />
       <InstagramGallery />

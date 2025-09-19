@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 const Wishlist = () => {
     return (
         <main>
-            <PageHeader currentPage='Wishlist' pageTitle='Wishlist' breadcrumbLink='shop-1' breadcrumbLabel='Shop' />
+            <PageHeader 
+                currentPage='Избранное' 
+                pageTitle='Избранное' 
+                breadcrumbLink='shop-3' 
+                breadcrumbLabel='Каталог'
+                bgImageUrl='/images/kits/serena/1.jpg'
+            />
             <WishlistProductsTable />
             <Newsletter />
             <InstagramGallery />

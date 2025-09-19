@@ -9,7 +9,13 @@ import InstagramGallery from '@/components/sections/instagramGallery'
 const Checkout = () => {
   return (
     <main>
-      <PageHeader currentPage='Оформление заказа' pageTitle='Оформление заказа' breadcrumbLink='/shop' breadcrumbLabel='Каталог' />
+      <PageHeader 
+          currentPage='Оформление заказа' 
+          pageTitle='Оформление заказа' 
+          breadcrumbLink='/shop-3' 
+          breadcrumbLabel='Каталог'
+          bgImageUrl='/images/kits/calma/1.jpg'
+      />
       <div className='container lg:pt-25 lg:pb-30 pt-15 pb-15'>
         <div className='grid lg:grid-cols-[auto_48.6%] grid-cols-1 gap-7.5'>
           <div>
