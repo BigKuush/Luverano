@@ -83,11 +83,7 @@ export const getFaqData = cache(async () => {
 
 export const getGalleryData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/gallery`);
-            if (!res.ok) throw new Error('Failed to fetch gallery data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return galleryDataOne;
     } catch (error) {
         throw new Error('Error in getGalleryData: ' + (error instanceof Error ? error.message : String(error)));
@@ -96,11 +92,7 @@ export const getGalleryData = cache(async () => {
 
 export const getPartnerData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/partners`);
-            if (!res.ok) throw new Error('Failed to fetch partner data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return partnerData;
     } catch (error) {
         throw new Error('Error in getPartnerData: ' + (error instanceof Error ? error.message : String(error)));
@@ -109,11 +101,7 @@ export const getPartnerData = cache(async () => {
 
 export const getPrivacyPolicyData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/privacy-policy`);
-            if (!res.ok) throw new Error('Failed to fetch privacy policy data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return privacyPolicyData;
     } catch (error) {
         throw new Error('Error in getPrivacyPolicyData: ' + (error instanceof Error ? error.message : String(error)));
@@ -122,11 +110,7 @@ export const getPrivacyPolicyData = cache(async () => {
 
 export const getTermsAndConditionsData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/terms-and-conditions`);
-            if (!res.ok) throw new Error('Failed to fetch terms and conditions data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return termsAndConditionsData;
     } catch (error) {
         throw new Error('Error in getTermsAndConditionsData: ' + (error instanceof Error ? error.message : String(error)));
@@ -135,11 +119,7 @@ export const getTermsAndConditionsData = cache(async () => {
 
 export const getTestimonialsData = cache(async () => {
     try {
-        if (process.env.NODE_ENV === 'production') {
-            const res = await fetch(`${baseUrl}/api/testimonials`);
-            if (!res.ok) throw new Error('Failed to fetch testimonials data');
-            return res.json();
-        }
+        // Всегда используем локальные данные для консистентности
         return testimonialData;
     } catch (error) {
         throw new Error('Error in getTestimonialsData: ' + (error instanceof Error ? error.message : String(error)));
