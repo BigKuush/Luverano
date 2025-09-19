@@ -4,7 +4,6 @@ import PageHeader from '@/components/sections/pageHeader'
 import CheckoutForm from '@/app/(innerPage)/checkout/checkoutForm'
 import CheckoutPayment from '@/app/(innerPage)/checkout/checkoutPayment'
 import Newsletter from '@/components/sections/newsletter'
-import InstagramGallery from '@/components/sections/instagramGallery'
 
 const Checkout = () => {
   return (
@@ -25,7 +24,6 @@ const Checkout = () => {
         </div>
       </div>
       <Newsletter />
-      <InstagramGallery />
     </main>
   )
 }

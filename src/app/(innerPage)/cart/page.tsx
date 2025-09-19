@@ -4,7 +4,6 @@ import ProductCalculateCard from "@/app/(innerPage)/cart/productCalculateCard"
 import ProductsCartTable from '@/app/(innerPage)/cart/productsCartTable'
 import RelatedProducts from '@/components/sections/shopDetails/relatedProducts'
 import Newsletter from '@/components/sections/newsletter'
-import InstagramGallery from '@/components/sections/instagramGallery'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -30,7 +29,6 @@ const VIewCart = () => {
             </div>
             <RelatedProducts/>
             <Newsletter/>
-            <InstagramGallery/>
         </main>
     )
 }
