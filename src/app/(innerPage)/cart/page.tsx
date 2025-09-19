@@ -18,7 +18,7 @@ const VIewCart = () => {
             <PageHeader 
                 currentPage='Корзина' 
                 pageTitle='Корзина' 
-                breadcrumbLink='shop-3' 
+                breadcrumbLink='/shop-3' 
                 breadcrumbLabel='Каталог'
                 bgImageUrl='/images/kits/valiente/1.jpg'
             />

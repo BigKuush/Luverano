@@ -92,7 +92,17 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                                 <div key={id} className='grid sm:grid-cols-[32.2%_auto] grid-cols-1 items-center gap-7.5'>
                                                     <div className='bg-[#F2F2F2] rounded-xl'>
                                                         <Link href={`/product/${encodeURIComponent(String(title).toLowerCase().replace(/\s+/g,'-'))}`} aria-label='product-image-link'>
-                                                            <Image width={280} height={320} sizes='100vw' src={thumbnail} alt="img" className='w-full rounded-xl' />
+                                                            <Image 
+                                                                width={280} 
+                                                                height={320} 
+                                                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw' 
+                                                                src={thumbnail} 
+                                                                alt={`${title} - изображение товара`} 
+                                                                className='w-full rounded-xl'
+                                                                loading="lazy"
+                                                                placeholder="blur"
+                                                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                                                            />
                                                         </Link>
                                                     </div>
                                                     <div>

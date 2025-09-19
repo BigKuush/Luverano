@@ -58,7 +58,7 @@ export function CardHeader({ children, className }: CardPropsType) {
   )
 }
 
-export function CardImg({ src, height, width, className, href, alt }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string }) {
+export function CardImg({ src, height, width, className, href, alt, priority = false }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string, priority?: boolean }) {
   const context = useContext(CardContext);
   const currentImage = context ? context.currentImage : '';
 
@@ -74,6 +74,10 @@ export function CardImg({ src, height, width, className, href, alt }: { src: str
             style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
             alt={alt || 'изображение товара'}
             className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
+            priority={priority}
+            loading={priority ? 'eager' : 'lazy'}
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
           />
         </Link>
       ) : (
@@ -85,6 +89,10 @@ export function CardImg({ src, height, width, className, href, alt }: { src: str
           style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
           alt={alt || 'изображение товара'}
           className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
+          priority={priority}
+          loading={priority ? 'eager' : 'lazy'}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
       )}
     </div>

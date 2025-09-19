@@ -39,7 +39,8 @@ const BlogSingle = () => {
                 pageTitle='Блог'
                 currentPage='Статья'
                 breadcrumbLabel='Блог'
-                breadcrumbLink='blog-1'
+                breadcrumbLink='/blog'
+                bgImageUrl='/images/kits/fortuna/1.jpg'
             />
             <BlogArtical />
             <RelatedBlogs />

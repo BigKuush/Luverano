@@ -16,7 +16,7 @@ const Wishlist = () => {
             <PageHeader 
                 currentPage='Избранное' 
                 pageTitle='Избранное' 
-                breadcrumbLink='shop-3' 
+                breadcrumbLink='/shop-3' 
                 breadcrumbLabel='Каталог'
                 bgImageUrl='/images/kits/serena/1.jpg'
             />

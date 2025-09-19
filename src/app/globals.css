@@ -222,29 +222,23 @@ body {
     transition: width 0.5s ease-in-out;
   }
 
-  /* Hero section standardized sizing */
-  .hero-slide {
-    height: 100vh;
-    min-height: 600px;
-    max-height: 800px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* Hero section standardized sizing */
+.hero-slide {
+  height: 100vh;
+  min-height: 600px;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  @media (max-width: 768px) {
-    .hero-slide {
-      height: 50vh;
-      min-height: 400px;
-      max-height: 500px;
-      background-size: 120% auto;
-      background-position: center center;
-      overflow: hidden;
-    }
+@media (max-width: 768px) {
+  .hero-slide {
+    height: 50vh;
+    min-height: 400px;
+    max-height: 500px;
   }
+}
 }
 
 @keyframes spring {

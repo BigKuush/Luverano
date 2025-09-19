@@ -16,7 +16,7 @@ const Compare = () => {
       <PageHeader 
           currentPage='Сравнение' 
           pageTitle='Сравнение товаров' 
-          breadcrumbLink='shop-3' 
+          breadcrumbLink='/shop-3' 
           breadcrumbLabel='Каталог'
           bgImageUrl='/images/kits/montoro/1.jpg'
       />

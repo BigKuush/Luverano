@@ -56,7 +56,19 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                             imgeList.map((img, index) => {
                                 return (
                                     <SwiperSlide key={index} className='relative'>
-                                        <Image width={580} height={560} style={{ width: "100%", height:"auto" }} sizes='100vw' src={img} className='object-contain' alt={`${productTitle || 'Товар'} — фото ${index+1}`} />
+                                        <Image 
+                                            width={580} 
+                                            height={560} 
+                                            style={{ width: "100%", height:"auto" }} 
+                                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw' 
+                                            src={img} 
+                                            className='object-contain' 
+                                            alt={`${productTitle || 'Товар'} — фото ${index+1}`}
+                                            priority={index === 0}
+                                            loading={index === 0 ? 'eager' : 'lazy'}
+                                            placeholder="blur"
+                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                                        />
                                         <PhotoView src={img}>
                                             <div className='text-gray-1-foreground absolute top-5 right-5 cursor-pointer'><Expand /></div>
                                         </PhotoView>
@@ -90,17 +102,25 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                                             width={100}
                                             height={80}
                                             src={img}
-                                            sizes='100vw'
+                                            sizes='(max-width: 768px) 25vw, 15vw'
                                             alt={`${productTitle || 'Товар'} — превью ${index+1}`}
                                             className='object-contain mx-auto'
+                                            loading="lazy"
+                                            placeholder="blur"
+                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                                         />
                                     ) : (
-                                        <Image width={130} height={120}
+                                        <Image 
+                                            width={130} 
+                                            height={120}
                                             src={img}
                                             style={{ width: '100%', height: 'auto' }}
-                                            sizes='100vw'
+                                            sizes='(max-width: 768px) 25vw, 15vw'
                                             alt={`${productTitle || 'Товар'} — превью ${index+1}`}
                                             className='aspect-[1/1]'
+                                            loading="lazy"
+                                            placeholder="blur"
+                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                                         />
                                     )}
                                 </div>
