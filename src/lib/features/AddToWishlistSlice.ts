@@ -53,10 +53,10 @@ const AddToWishlistSlice = createSlice({
         addToWishlist: (state, action: PayloadAction<Product>) => {
             const itemInCart = state.products.find((item) => item.id === action?.payload.id);
             if (itemInCart) {
-                toast.success('The Product already has');
+                toast.success('Товар уже в избранном');
                 return;
             } else {
-                toast.success('Add To Wishlist Successfully');
+                toast.success('Товар добавлен в избранное');
                 state.products.push({
                     ...action.payload,
                 });

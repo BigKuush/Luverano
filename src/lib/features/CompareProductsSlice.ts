@@ -53,10 +53,10 @@ const CompareProductsSlice = createSlice({
         addToCompare: (state, action: PayloadAction<CompareType>) => {
             const itemInCart = state.products.find((item) => item.id === action?.payload.id);
             if (itemInCart) {
-                toast.success('The Product already has');
+                toast.success('Товар уже в сравнении');
                 return;
             } else {
-                toast.success('Product Add Successfully');
+                toast.success('Товар добавлен в сравнение');
                 state.products.push({
                     ...action.payload,
                 });

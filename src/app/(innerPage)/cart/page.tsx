@@ -8,14 +8,14 @@ import InstagramGallery from '@/components/sections/instagramGallery'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "Cart",
-    description: "View your shopping cart and proceed to checkout."
+    title: "Корзина - Luverano",
+    description: "Просмотрите товары в корзине и оформите заказ."
 }
 
 const VIewCart = () => {
     return (
         <main>
-            <PageHeader currentPage='View Cart' pageTitle='View Cart' breadcrumbLink='shop-1' breadcrumbLabel='Shop' />
+            <PageHeader currentPage='Корзина' pageTitle='Корзина' breadcrumbLink='shop-3' breadcrumbLabel='Каталог' />
             <div className='container lg:pt-25 lg:pb-25 pt-15 pb-15'>
                 <div className='grid xl:grid-cols-[auto_23.944%] lg:grid-cols-[auto_30%] grid-cols-1 gap-7.5 items-start'>
                     <ProductsCartTable />

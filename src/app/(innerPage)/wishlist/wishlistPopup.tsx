@@ -59,7 +59,7 @@ const WishlistPopup = () => {
                                                         onClick={() => dispatch(addToCart({ id, price: finalPrice, quantity: 1, thumbnail, title, color, size }))}
                                                         className='lg:py-3 lg:px-6 lg:text-lg text-gray-1-foreground border-gray-1 ml-auto'
                                                     >
-                                                        Add To cart
+                                                        В корзину
                                                     </Button>
                                                 </div>
                                             )
@@ -67,15 +67,15 @@ const WishlistPopup = () => {
                                     }
                                 </div>
                                 :
-                                <p className='text-secondary-foreground font-semibold text-2xl text-center capitalize py-20'>No Products in your Wishlist Popup</p>
+                                <p className='text-secondary-foreground font-semibold text-2xl text-center capitalize py-20'>В избранном нет товаров</p>
                         }
                     </div>
                     <div className='flex flex-wrap justify-between gap-5 px-7.5 pt-7.5'>
                         <Button  asChild className='lg:py-3 lg:px-6 lg:text-lg'>
-                            <Link href={"/wishlist"}>Open Wishlist Page</Link>
+                            <Link href={"/wishlist"}>Открыть избранное</Link>
                         </Button>
                         <Button variant={"outline"} asChild className='lg:py-3 lg:px-6 lg:text-lg'>
-                            <Link href={"/"}>Continue Shopping</Link>
+                            <Link href={"/"}>Продолжить покупки</Link>
                         </Button>
                     </div>
                 </div>

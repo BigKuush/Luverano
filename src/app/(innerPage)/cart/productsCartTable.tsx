@@ -17,10 +17,10 @@ const ProductsCartTable = () => {
             <Table className="min-w-[700px] xl:min-w-full">
                 <TableHeader>
                     <TableRow>
-                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground'>Products</TableHead>
-                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[165px]'>Price</TableHead>
-                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[190px]'>Quantity</TableHead>
-                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[171px]'>Subtotal</TableHead>
+                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground'>Товары</TableHead>
+                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[165px]'>Цена</TableHead>
+                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[190px]'>Количество</TableHead>
+                        <TableHead className='px-7.5 py-4 lg:text-xl text-lg font-semibold text-secondary-foreground w-[171px]'>Сумма</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -36,7 +36,7 @@ const ProductsCartTable = () => {
                                         <b className='lg:text-xl text-lg font-medium text-secondary-foreground capitalize max-w-[200px] line-clamp-1'>{title}</b>
                                     </TableCell>
                                     <TableCell className='text-lg font-medium text-secondary-foreground py-5 px-7.5 w-[165px]'>
-                                        ${price.toFixed(2)}
+                                        {price.toFixed(0)} ₽
                                     </TableCell>
                                     <TableCell className="py-5 px-7.5 w-[190px]">
                                         <div className='max-w-25 border border-gray-1 flex items-center gap-4 px-[14px] py-[11px] text-sm font-medium text-gray-1-foreground'>
@@ -46,7 +46,7 @@ const ProductsCartTable = () => {
                                         </div>
                                     </TableCell>
                                     <TableCell className='text-lg font-medium text-gray-1-foreground py-5 px-7.5 w-[171px]'>
-                                        ${Number(totalPrice).toFixed(2)}
+                                        {Number(totalPrice).toFixed(0)} ₽
                                     </TableCell>
                                     <TableCell className='text-gray-1-foreground cursor-pointer py-5 px-7.5' onClick={() => dispatch(removeToCart(id))}>
                                         <Close className='size-7.5' />
@@ -59,11 +59,11 @@ const ProductsCartTable = () => {
             </Table>
             <div className='flex flex-wrap lg:flex-nowrap justify-between items-center gap-5 border-t-[1.5px] border-t-[#E5E2E1] px-7.5 py-7.5'>
                 <div className='max-w-[522px] flex items-center gap-2.5'>
-                    <Input type={"text"} placeholder={"Coupon code"} className={"border-gray px-5 py-[14px]"} />
-                    <Button  className="lg:px-6 px-4 lg:py-3 lg:text-lg">Apply coupon</Button>
+                    <Input type={"text"} placeholder={"Промокод"} className={"border-gray px-5 py-[14px]"} />
+                    <Button  className="lg:px-6 px-4 lg:py-3 lg:text-lg">Применить</Button>
                 </div>
                 <Button variant={"outline"} asChild className='lg:px-6 lg:py-3 lg:text-lg'>
-                    <Link href={"/shop"}>Continue Shopping</Link>
+                    <Link href={"/shop-3"}>Продолжить покупки</Link>
                 </Button>
             </div>
         </div>
