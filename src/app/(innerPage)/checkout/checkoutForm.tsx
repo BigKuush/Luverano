@@ -3,7 +3,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import RegisterForm from './registerForm'
 import { useAppSelector } from '@/lib/reduxHooks'
 import toast from 'react-hot-toast'
 
@@ -58,7 +57,6 @@ const CheckoutForm = () => {
                         </label>
                     </div>
                 </div>
-                <RegisterForm />
                 <Button type="submit"  className="w-full mt-5 lg:px-6 lg:py-3 lg:text-lg">Отправить заказ</Button>
                 {/* {state?.message && <p className="mt-4 text-green-600 text-center">{state.message}</p>} */}
             </form>

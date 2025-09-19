@@ -5,8 +5,6 @@ import CheckoutForm from '@/app/(innerPage)/checkout/checkoutForm'
 import CheckoutPayment from '@/app/(innerPage)/checkout/checkoutPayment'
 import Newsletter from '@/components/sections/newsletter'
 import InstagramGallery from '@/components/sections/instagramGallery'
-import LoginForm from './loginForm'
-import CouponCodeForm from './couponCodeForm'
 
 const Checkout = () => {
   return (
@@ -15,8 +13,6 @@ const Checkout = () => {
       <div className='container lg:pt-25 lg:pb-30 pt-15 pb-15'>
         <div className='grid lg:grid-cols-[auto_48.6%] grid-cols-1 gap-7.5'>
           <div>
-            <LoginForm />
-            <CouponCodeForm />
             <CheckoutForm />
           </div>
           <CheckoutPayment />
