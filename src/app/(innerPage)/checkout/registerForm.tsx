@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
@@ -20,10 +19,12 @@ const RegisterForm = () => {
     return (
         <Dialog open={open} onOpenChange={() => setOpen(!open)}>
             <div className='flex items-center gap-2.5 mt-5'>
-                <Checkbox
+                <input
+                    type="checkbox"
                     checked={open}
-                    onCheckedChange={(value: boolean) => setOpen(typeof value === 'boolean' ? value : false)}
-                    id="extra" className="rounded-[4px] border-primary data-[state=checked]:bg-primary data-[state=checked]:text-white"
+                    onChange={(e) => setOpen(e.target.checked)}
+                    id="extra" 
+                    className="rounded-[4px] border-primary data-[state=checked]:bg-primary data-[state=checked]:text-white"
                 />
                 <Label htmlFor="extra" className="text-base text-secondary-foreground">Создать аккаунт?</Label>
             </div>
@@ -44,10 +45,6 @@ const RegisterForm = () => {
                             Пароль<span className='text-red-400'>*</span>
                             <Input type='password' name='password' id='password' required className='py-3 px-5 border-[#999796] border-[1.5px] placeholder:text-[#999796] text-gray-1-foreground mt-2.5' />
                         </Label>
-                        <div className='flex items-center gap-2.5'>
-                            <Checkbox id="checkout-terms" className="rounded-none border-primary data-[state=checked]:bg-primary data-[state=checked]:text-white" />
-                            <Label htmlFor="checkout-terms" className="text-base text-gray-1-foreground">Я согласен со всеми <Link href={"/terms-conditions"} className='text-gray-1-foreground underline decoration-skip-ink-none text-underline-position'>Условиями использования</Link> </Label>
-                        </div>
                         <Button onClick={handleSingup} className='w-full lg:py-[11px] lg:text-lg mt-7.5'>Регистрация</Button>
                     </form>
                     <SocialLoginButtons />

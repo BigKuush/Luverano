@@ -7,7 +7,6 @@ import { faqData } from "@/db/faqData";
 import { galleryDataOne } from "@/db/galleryData";
 import { partnerData } from "@/db/partnerData";
 import { privacyPolicyData } from "@/db/privacyPolicyData";
-import { termsAndConditionsData } from "@/db/termsAndConditionsData";
 import { testimonialData } from "@/db/testimonialsData";
 import { heroData } from "@/db/heroData";
 import { products } from "@/db/products";
@@ -96,14 +95,6 @@ export const getPrivacyPolicyData = cache(async () => {
     }
 });
 
-export const getTermsAndConditionsData = cache(async () => {
-    try {
-        // Всегда используем локальные данные для консистентности
-        return termsAndConditionsData;
-    } catch (error) {
-        throw new Error('Error in getTermsAndConditionsData: ' + (error instanceof Error ? error.message : String(error)));
-    }
-});
 
 export const getTestimonialsData = cache(async () => {
     try {

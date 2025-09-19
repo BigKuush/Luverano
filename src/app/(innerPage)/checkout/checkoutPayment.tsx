@@ -3,7 +3,6 @@ import React from 'react'
 import Image from 'next/image'
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from '@/components/ui/label'
-import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useAppDispatch, useAppSelector } from '@/lib/reduxHooks'
@@ -75,11 +74,6 @@ const CheckoutPayment = () => {
             </div>
 
             <div className='mt-10'>
-                <div className='flex items-center gap-2.5 mt-10'>
-                    <Checkbox id="terms" className="rounded-[4px] border-primary data-[state=checked]:bg-primary data-[state=checked]:text-white" />
-                    <Label htmlFor="terms" className="lg:text-lg text-base font-normal text-secondary-foreground">Я согласен с <Link href={"/terms-conditions"} className='underline'>условиями использования сайта</Link><span className='text-primary-foreground'>*</span></Label>
-                </div>
-
                 <Button className='lg:py-3 w-full mt-10 lg:leading-[166%] lg:text-lg'>Оформить заказ</Button>
             </div>
         </div>
