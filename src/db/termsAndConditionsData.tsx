@@ -65,7 +65,7 @@ export const termsAndConditionsData: TermsAndConditionsType[] = [
     },
     {
         title: 'Indemnification',
-        description: 'You agree to indemnify, defend, and hold harmless Luverano, its affiliates, and their respective officers, directors, employees, agents, licensors, and suppliers from and against all claims, losses, liabilities, expenses, damages, and costs, including reasonable attorneys' fees, arising out of or relating to your use of our website, your violation of these Terms, or your violation of any rights of another.',
+        description: 'You agree to indemnify, defend, and hold harmless Luverano, its affiliates, and their respective officers, directors, employees, agents, licensors, and suppliers from and against all claims, losses, liabilities, expenses, damages, and costs, including reasonable attorneys\' fees, arising out of or relating to your use of our website, your violation of these Terms, or your violation of any rights of another.',
         details: [],
     },
     {
