@@ -38,11 +38,15 @@ const ShopingCartSidebar = () => {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger aria-label='shoping-cart' className='text-gray-1-foreground relative'>
               <ShopCart className='size-6' />
-              <span className='w-[15px] h-[15px] bg-primary rounded-full flex items-center justify-center text-xs text-white absolute -right-[3px] -top-[3px]'>{totalProducts}</span>
+              {totalProducts > 0 && (
+                <span className='w-[15px] h-[15px] bg-primary rounded-full flex items-center justify-center text-xs text-white absolute -right-[3px] -top-[3px]'>{totalProducts}</span>
+              )}
             </SheetTrigger >
             <SheetContent className='sm:max-w-[420px] w-full p-0 [&_.close-orginal]:hidden'>
               <SheetHeader className='bg-[#F5F5F5] px-7.5 py-[31px] flex flex-row justify-between items-center space-y-0'>
-                <SheetTitle className='text-secondary-foreground font-inter font-medium uppercase leading-[155%]'>Корзина ({totalProducts})</SheetTitle>
+                <SheetTitle className='text-secondary-foreground font-inter font-medium uppercase leading-[155%]'>
+                  Корзина{totalProducts > 0 && ` (${totalProducts})`}
+                </SheetTitle>
                 <SheetClose className='text-gray-1-foreground mt-0'>
                   <Close className='lg:w-7.5 lg:h-7.5 w-5 h-5' />
                 </SheetClose>
