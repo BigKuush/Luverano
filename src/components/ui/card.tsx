@@ -52,7 +52,7 @@ export function CardFooter({ children, className }: CardPropsType) {
 
 export function CardHeader({ children, className }: CardPropsType) {
   return (
-    <div className={cn('bg-[#F2F2F2] border border-[#F2F2F2] rounded-[15px] drop-shadow-[(0px_4px_40px_rgba(0,0,0,0.08))] relative overflow-hidden', className)}>
+    <div className={cn('border border-[#F2F2F2] rounded-[15px] drop-shadow-[(0px_4px_40px_rgba(0,0,0,0.08))] relative overflow-hidden', className)}>
       {children}
     </div>
   )
@@ -63,17 +63,17 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
   const currentImage = context ? context.currentImage : '';
 
   return (
-    <div className={cn('overflow-hidden rounded-xl', className)}>
+    <div className={cn('overflow-hidden rounded-xl bg-[#F2F2F2] flex items-center justify-center', className)} style={{ height: `${height}px` }}>
       {href ? (
-        <Link href={href} aria-label='product-image-link'>
+        <Link href={href} aria-label='product-image-link' className="w-full h-full flex items-center justify-center">
           <Image
             src={currentImage || src}
             height={height}
             width={width}
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
             alt={alt || 'изображение товара'}
-            className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
+            className='hover:scale-110 transition-all duration-700 rounded-xl'
             priority={priority}
             loading={priority ? 'eager' : 'lazy'}
             placeholder="blur"
@@ -86,9 +86,9 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
           height={height}
           width={width}
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-          style={{ width: "100%", height: "auto", maxWidth: `${width}px` }}
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
           alt={alt || 'изображение товара'}
-          className='mx-auto hover:scale-110 transition-all duration-700 rounded-xl'
+          className='hover:scale-110 transition-all duration-700 rounded-xl'
           priority={priority}
           loading={priority ? 'eager' : 'lazy'}
           placeholder="blur"
