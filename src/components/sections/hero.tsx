@@ -32,7 +32,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                 {
                     data.map(({ description, id, thumbnail, title }) => {
                         return (
-                            <SwiperSlide key={id} style={{ backgroundImage: `url(${thumbnail})` }} className={`bg-no-repeat bg-center bg-cover bg-gradient-to-l from-[rgba(255,255,255,0)_50%] to-[rgba(255,255,255,0.7)_100%]`}>
+                            <SwiperSlide key={id} style={{ backgroundImage: `url(${thumbnail})` }} className={`bg-no-repeat bg-center bg-cover bg-gradient-to-l from-[rgba(0,0,0,0.3)_0%] via-[rgba(0,0,0,0.1)_50%] to-[rgba(0,0,0,0.4)_100%]`}>
                                 {({ isActive }) => (
                                     <div className='container lg:pt-[190px] sm:pt-[140px] pt-30 xl:pb-[193px] lg:pb-[170px] pb-[150px]'>
                                         <motion.h1
@@ -42,7 +42,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                                                 duration: 0.3,
                                                 delay: isActive ? 0.5 : 0,
                                             }}
-                                            className='text-[clamp(1.75rem,1.1rem+3.2vw,4.5rem)] leading-[115%] max-w-[810px] text-secondary-foreground font-light mb-2.5'
+                                            className='text-[clamp(1.75rem,1.1rem+3.2vw,4.5rem)] leading-[115%] max-w-[810px] text-white font-light mb-2.5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                                         >
                                             {title}
                                         </motion.h1>
@@ -53,7 +53,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                                                 duration: 0.3,
                                                 delay: isActive ? 0.7 : 0,
                                             }}
-                                            className='max-w-[570px] text-[18px] text-secondary-foreground'
+                                            className='max-w-[570px] text-[18px] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                                         >
                                             {description}
                                         </motion.p>
