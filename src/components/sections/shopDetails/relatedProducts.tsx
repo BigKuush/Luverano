@@ -18,7 +18,7 @@ const RelatedProducts = async ({ className, excludeId }: { className?: string; e
                             return (
                                 <Card key={prd.id}>
                                     <CardHeader>
-                                        <CardImg src={prd.thumbnail} height={500} width={420} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} fit='contain' />
+                                        <CardImg src={prd.thumbnail} height={280} width={420} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} fit='contain' />
                                         {/* label скрываем: не рендерим */}
                                         <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                         <CardIcons product={prd} />
