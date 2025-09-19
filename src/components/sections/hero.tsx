@@ -12,7 +12,7 @@ import { HeroDataType } from '@/db/heroData'
 
 const Hero = ({ data }: { data: HeroDataType[] }) => {
     return (
-        <section>
+        <section className="h-[100vh] min-h-[600px]">
             <Swiper
                 grabCursor
                 loop
@@ -28,11 +28,12 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                     bulletActiveClass: 'hero-pagination-bullet-active',
                 }}
                 modules={[Autoplay, Pagination]}
+                className="h-full"
             >
                 {
                     data.map(({ description, id, thumbnail, title }) => {
                         return (
-                            <SwiperSlide key={id} style={{ backgroundImage: `url(${thumbnail})` }} className={`bg-no-repeat bg-center bg-cover bg-gradient-to-l from-[rgba(0,0,0,0.3)_0%] via-[rgba(0,0,0,0.1)_50%] to-[rgba(0,0,0,0.4)_100%]`}>
+                            <SwiperSlide key={id} style={{ backgroundImage: `url(${thumbnail})` }} className={`hero-slide bg-no-repeat bg-center bg-cover bg-gradient-to-l from-[rgba(0,0,0,0.3)_0%] via-[rgba(0,0,0,0.1)_50%] to-[rgba(0,0,0,0.4)_100%]`}>
                                 {({ isActive }) => (
                                     <div className='container lg:pt-[190px] sm:pt-[140px] pt-30 xl:pb-[193px] lg:pb-[170px] pb-[150px]'>
                                         <motion.h1
