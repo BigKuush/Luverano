@@ -62,7 +62,7 @@ const ShopingCartSidebar = () => {
                             <input value={quantity} readOnly className='outline-none max-w-5 text-center text-sm' />
                             <span className='cursor-pointer h-4 w-5 inline-flex items-center justify-center' onClick={() => dispatch(incrementProductQuentity({ id }))}><Plus /></span>
                           </div>
-                          <span className='text-secondary-foreground text-base'>{currencyFormatter.format(price, { code: 'RUB', thousand: ' ', precision: 0 })} ₽</span>
+                          <span className='text-secondary-foreground text-base'>{currencyFormatter.format(price, { code: 'RUB', thousand: ' ', precision: 0 })}</span>
                         </div>
                         <p onClick={() => dispatch(removeToCart(id))} className='text-gray-1-foreground capitalize underline decoration-skip-ink-none text-underline-position decoration-[#666564] cursor-pointer leading-[150%] text-base hover:text-secondary-foreground transition-all duration-500'>
                           Удалить
@@ -78,7 +78,7 @@ const ShopingCartSidebar = () => {
                 <div className='bg-[#F5F5F5] px-7.5 py-4 flex justify-between items-center'>
                   <p className='text-secondary-foreground font-medium leading-[155%]'>Итого:</p>
                   <p className='text-secondary-foreground font-medium'>
-                    {currencyFormatter.format(totalPrice, { code: 'RUB', thousand: ' ', precision: 0 })} ₽
+                    {currencyFormatter.format(totalPrice, { code: 'RUB', thousand: ' ', precision: 0 })}
                   </p>
                 </div>
                 <div className='px-7.5 pt-7.5'>
