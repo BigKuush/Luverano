@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 
 const CheckoutForm = () => {
     const products = useAppSelector((s) => s.addToCart.products)
+    const { shippingType, shippingPrice } = useAppSelector((s) => s.order)
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.currentTarget
@@ -20,13 +21,13 @@ const CheckoutForm = () => {
         const email = String(data.get('email') || '')
 
         const subtotal = products.reduce((sum, p) => sum + p.price * p.quantity, 0)
-        const shipping = 0
+        const shipping = shippingPrice
         const total = subtotal + shipping
 
         const orderPayload = {
             items: products.map((p) => ({ id: p.id, title: p.title, price: p.price, quantity: p.quantity, color: (p as any).color, size: (p as any).size })),
             customer: { name: name.trim(), email, phone },
-            delivery: { type: 'free' as const, address: 'Москва, рабочий посёлок Заречье, Торговая ул., с2' },
+            delivery: { type: shippingType, address: 'Москва, рабочий посёлок Заречье, Торговая ул., с2' },
             totals: { subtotal, shipping, total },
         }
 

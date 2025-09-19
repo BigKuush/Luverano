@@ -2,13 +2,15 @@ import { configureStore } from '@reduxjs/toolkit'
 import AddToCartSlice from './features/AddToCartSlice'
 import AddToWishlistSlice from './features/AddToWishlistSlice'
 import CompareProductsSlice from './features/CompareProductsSlice'
+import OrderSlice from './features/OrderSlice'
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             addToCart: AddToCartSlice,
             addToWishlist: AddToWishlistSlice,
-            productCompare: CompareProductsSlice
+            productCompare: CompareProductsSlice,
+            order: OrderSlice
         },
     })
 }
