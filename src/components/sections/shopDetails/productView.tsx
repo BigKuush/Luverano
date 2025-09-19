@@ -68,7 +68,7 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                             return (
                                                 <Card key={prd.id}>
                                                     <CardHeader>
-                                                        <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} />
+                                                        <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} videoUrl={prd.videoUrl} />
                                                         <CardLabel isLabel={prd.label ? prd.label : false}>{prd.label}</CardLabel>
                                                         <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                                         <CardIcons product={prd} />

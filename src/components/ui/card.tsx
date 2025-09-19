@@ -58,9 +58,10 @@ export function CardHeader({ children, className }: CardPropsType) {
   )
 }
 
-export function CardImg({ src, height, width, className, href, alt, priority = false, videoUrl }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string, priority?: boolean, videoUrl?: string }) {
+export function CardImg({ src, height, width, className, href, alt, priority = false, videoUrl, fit = 'cover' }: { src: string, height: number, width: number, className?: string, href?: string, alt?: string, priority?: boolean, videoUrl?: string, fit?: 'cover' | 'contain' }) {
   const context = useContext(CardContext);
   const currentImage = context ? context.currentImage : '';
+  const objectFitClass = fit === 'contain' ? 'object-contain' : 'object-cover';
 
   return (
     <div className={cn('overflow-hidden rounded-xl relative group', className)} style={{ height: `${height}px` }}>
@@ -71,7 +72,7 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
             fill
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
             alt={alt || 'изображение товара'}
-            className='object-cover hover:scale-110 transition-all duration-700'
+            className={`${objectFitClass} hover:scale-110 transition-all duration-700`}
             priority={priority}
             loading={priority ? 'eager' : 'lazy'}
             placeholder="blur"
@@ -84,7 +85,7 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
           fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           alt={alt || 'изображение товара'}
-          className='object-cover hover:scale-110 transition-all duration-700'
+          className={`${objectFitClass} hover:scale-110 transition-all duration-700`}
           priority={priority}
           loading={priority ? 'eager' : 'lazy'}
           placeholder="blur"
@@ -92,19 +93,37 @@ export function CardImg({ src, height, width, className, href, alt, priority = f
         />
       )}
       
-      {/* Кнопка видео */}
+      {/* Кнопка видео с обложкой */}
       {videoUrl && (
-        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
           <button 
-            className="w-16 h-16 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-all duration-300"
+            className="w-20 h-20 bg-white bg-opacity-95 hover:bg-opacity-100 rounded-full flex items-center justify-center shadow-xl transform scale-0 group-hover:scale-100 transition-all duration-300 hover:scale-110"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              // Открытие видео в новой вкладке
-              window.open(videoUrl, '_blank');
+              // Создаем iframe для встраивания видео ВК
+              const iframe = document.createElement('iframe');
+              // Извлекаем ID видео из URL
+              const match = videoUrl.match(/video(-?\d+)_(\d+)/);
+              const ownerId = match ? match[1] : '-51272271';
+              const videoId = match ? match[2] : '';
+              iframe.src = `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}&hd=2&autoplay=1&mute=1&muted=1`;
+              iframe.width = '100%';
+              iframe.height = '100%';
+              iframe.frameBorder = '0';
+              (iframe as any).allowFullscreen = true;
+              iframe.allow = 'autoplay; fullscreen';
+              iframe.className = 'absolute inset-0 w-full h-full';
+              
+              // Заменяем содержимое контейнера на видео
+              const container = e.currentTarget.closest('.group');
+              if (container) {
+                container.innerHTML = '';
+                container.appendChild(iframe);
+              }
             }}
           >
-            <svg className="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
             </svg>
           </button>

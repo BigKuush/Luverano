@@ -7,17 +7,35 @@ import ProductShortInfo from '@/components/sections/shopDetails/productShortInfo
 import ProductDetailsTabView from '@/components/sections/shopDetails/productDetailsTabView'
 import RelatedProducts from '@/components/sections/shopDetails/relatedProducts'
 import Newsletter from '@/components/sections/newsletter'
+import { productVideoLinks } from '@/db/videoLinks'
 
 export const revalidate = 0
 export const dynamic = 'force-dynamic'
 
 async function getProductBySlug(slug: string) {
     const { featuredProducts, topCollections } = await getProductsData() as any
-    const all = Array.isArray(featuredProducts) ? featuredProducts : []
-    const extras = Array.isArray(topCollections) ? topCollections : []
-    const merged = [...extras, ...all]
-    const bySlug = merged.find((p: any) => productToSlug(p.id, p.title) === slug)
-    return bySlug || null
+    const feats = Array.isArray(featuredProducts) ? featuredProducts : []
+    const tops = Array.isArray(topCollections) ? topCollections : []
+
+    const ft = feats.find((p: any) => productToSlug(p.id, p.title) === slug)
+    const tp = tops.find((p: any) => productToSlug(p.id, p.title) === slug)
+
+    if (ft || tp) {
+        // Детальные поля — из topCollections; цена — из featured (если есть)
+        const result: any = { ...(ft || {}), ...(tp || {}) }
+        if (ft?.price) result.price = ft.price
+        // Единый источник ссылок: берём по названию из videoLinks
+        result.videoUrl = productVideoLinks[result.title] || tp?.videoUrl || ft?.videoUrl
+        return result
+    }
+
+    // fallback: поиск по объединению
+    const merged = [...feats, ...tops]
+    const bySlug: any = merged.find((p: any) => productToSlug(p.id, p.title) === slug)
+    if (!bySlug) return null
+    // Подстрахуем ссылку на видео из единого файла
+    bySlug.videoUrl = productVideoLinks[bySlug.title] || bySlug.videoUrl
+    return bySlug
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
