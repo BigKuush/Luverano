@@ -17,7 +17,7 @@ const MobileNavbar = () => {
                     <IcHome />
                     <span className='text-base inline-block mt-0.5'>Главная</span>
                 </Link>
-                <Link href={"/shop"} className={`flex flex-col items-center ${currrentPathname === "/shop" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
+                <Link href={"/shop-3"} className={`flex flex-col items-center ${currrentPathname === "/shop-3" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
                     <ShopBug className='size-6' />
                     <span className='text-base inline-block mt-0.5'>Каталог</span>
                 </Link>
