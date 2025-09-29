@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
-import PageHeader from '@/components/sections/pageHeader'
-import CheckoutForm from '@/app/(innerPage)/checkout/checkoutForm'
-import CheckoutPayment from '@/app/(innerPage)/checkout/checkoutPayment'
-import Newsletter from '@/components/sections/newsletter'
+// Используем относительные пути, чтобы избежать проблем с alias "@" на сторонних билд-окружениях
+import PageHeader from '../../../components/sections/pageHeader'
+import CheckoutForm from './checkoutForm'
+import CheckoutPayment from './checkoutPayment'
+import Newsletter from '../../../components/sections/newsletter'
 
 const Checkout = () => {
   return (
