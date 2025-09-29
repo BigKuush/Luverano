@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "deploy": "./deploy.sh",
+    "pm2:start": "pm2 start npm --name luverano -- start",
+    "pm2:stop": "pm2 stop luverano",
+    "pm2:restart": "pm2 restart luverano",
+    "pm2:logs": "pm2 logs luverano",
+    "pm2:status": "pm2 status"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
