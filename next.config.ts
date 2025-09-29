@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 // bundle analyzer доступен локально как devDependency.
 // На управляемом билд-сервере devDeps могут не ставиться,
 // поэтому подключаем опционально (без него конфиг просто вернётся как есть).
@@ -48,6 +49,14 @@ const nextConfig: NextConfig = {
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
+  },
+  webpack: (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      "@": path.join(__dirname, "src"),
+    };
+    return config;
   },
 };
 
