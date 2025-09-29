@@ -49,7 +49,7 @@ const ProductShortInfo = ({ id, isSiteMapShow, title, price, discountPercentage,
                 <div className='flex items-center flex-wrap gap-0.5 mb-7.5'>
                     <Link href={"/"} className='text-gray-3-foreground text-base hover:text-gray-1-foreground transition-all duration-500'>Главная</Link>
                     <span className='text-gray-3-foreground'><ChevronRight className='size-4' /></span>
-                    <Link href={"/shop-3?category=komplekty"} className='text-gray-3-foreground text-base hover:text-gray-1-foreground transition-all duration-500'>Каталог</Link>
+                    <Link href={"/catalog"} className='text-gray-3-foreground text-base hover:text-gray-1-foreground transition-all duration-500'>Каталог</Link>
                     <span className='text-gray-3-foreground'><ChevronRight className='size-4' /></span>
                     <span className='text-gray-1-foreground font-medium'>{title}</span>
                 </div>

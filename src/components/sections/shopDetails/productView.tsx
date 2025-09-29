@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { productToSlug } from '@/lib/slug'
 import currencyFormatter from 'currency-formatter';
 import { Eye, Heart, ShopCart, Shuffle } from '@/lib/icon'
 import { Button } from '@/components/ui/button'
@@ -31,6 +32,16 @@ type ProductsViewPropsType = {
 
 
 const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, isSidebarCategoryHide, data }: ProductsViewPropsType) => {
+    // Проверяем, что data определен и является массивом
+    if (!data || !Array.isArray(data)) {
+        return (
+            <div className="text-center py-8">
+                <p className="text-gray-500">Товары не найдены</p>
+            </div>
+        )
+    }
+    
+    
     const [isGridView, setIsGridView] = useState<boolean>(isGridDefaultView)
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [product, setProduct] = useState<ProductShortInfoPropsType>({
@@ -67,14 +78,14 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                         data.map((prd) => {
                                             return (
                                                 <Card key={prd.id}>
-                                                    <CardHeader>
-                                                        <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} videoUrl={prd.videoUrl} />
+                                                <CardHeader>
+                                                    <CardImg src={prd.thumbnail} height={350} width={300} href={`/product/${productToSlug(prd.id, prd.title)}`} alt={`${prd.title} — фото`} />
                                                         <CardLabel isLabel={prd.label ? prd.label : false}>{prd.label}</CardLabel>
                                                         <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                                         <CardIcons product={prd} />
                                                     </CardHeader>
                                                     <CardFooter>
-                                                        <CardTitle path={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`}>{prd.title}</CardTitle>
+                                                    <CardTitle path={`/product/${productToSlug(prd.id, prd.title)}`}>{prd.title}</CardTitle>
                                                         <CardPriceEnhanced price={prd.price} discountPercentage={prd.discountPercentage} />
                                                     </CardFooter>
                                                 </Card>
@@ -91,7 +102,7 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                             return (
                                                 <div key={id} className='grid sm:grid-cols-[32.2%_auto] grid-cols-1 items-center gap-7.5'>
                                                     <div className='bg-[#F2F2F2] rounded-xl'>
-                                                        <Link href={`/product/${encodeURIComponent(String(title).toLowerCase().replace(/\s+/g,'-'))}`} aria-label='product-image-link'>
+                                                        <Link href={`/product/${productToSlug(id, title)}`} aria-label='product-image-link'>
                                                             <Image 
                                                                 width={280} 
                                                                 height={320} 
@@ -106,7 +117,7 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                                         </Link>
                                                     </div>
                                                     <div>
-                                                        <Link href={`/product/${encodeURIComponent(String(title).toLowerCase().replace(/\s+/g,'-'))}`} className='text-[clamp(1.25rem,1.0769rem+0.7692vw,2rem)] leading-[131%] text-secondary-foreground font-medium capitalize line-clamp-1 hover:text-primary-foreground transition-all duration-500'>{title}</Link>
+                                                        <Link href={`/product/${productToSlug(id, title)}`} className='text-[clamp(1.25rem,1.0769rem+0.7692vw,2rem)] leading-[131%] text-secondary-foreground font-medium capitalize line-clamp-1 hover:text-primary-foreground transition-all duration-500'>{title}</Link>
                                                         {listText ? (
                                                             <p className='text-gray-1-foreground leading-[155%] mt-2.5'>{listText}</p>
                                                         ) : null}

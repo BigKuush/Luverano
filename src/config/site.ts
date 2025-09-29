@@ -11,7 +11,7 @@ export const siteConfig = {
         },
         {
             title: "Каталог",
-            href: "/shop",
+            href: "/catalog",
         },
         {
             title: "Блог",

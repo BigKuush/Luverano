@@ -16,17 +16,19 @@ async function getProductBySlug(slug: string) {
     const { featuredProducts, topCollections } = await getProductsData() as any
     const feats = Array.isArray(featuredProducts) ? featuredProducts : []
     const tops = Array.isArray(topCollections) ? topCollections : []
+    
+    // Объединяем и убираем дубликаты
+    const allProducts = [...feats, ...tops]
+    const uniqueProducts = allProducts.filter((product, index, self) => 
+        index === self.findIndex(p => p.id === product.id)
+    )
 
-    const ft = feats.find((p: any) => productToSlug(p.id, p.title) === slug)
-    const tp = tops.find((p: any) => productToSlug(p.id, p.title) === slug)
+    const product = uniqueProducts.find((p: any) => productToSlug(p.id, p.title) === slug)
 
-    if (ft || tp) {
-        // Детальные поля — из topCollections; цена — из featured (если есть)
-        const result: any = { ...(ft || {}), ...(tp || {}) }
-        if (ft?.price) result.price = ft.price
+    if (product) {
         // Единый источник ссылок: берём по названию из videoLinks
-        result.videoUrl = productVideoLinks[result.title] || tp?.videoUrl || ft?.videoUrl
-        return result
+        product.videoUrl = productVideoLinks[product.title] || product.videoUrl
+        return product
     }
 
     // fallback: поиск по объединению
@@ -95,7 +97,7 @@ const ProductPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
         '@type': 'BreadcrumbList',
         itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://luverano.ru/' },
-            { '@type': 'ListItem', position: 2, name: 'Каталог', item: 'https://luverano.ru/shop-3' },
+            { '@type': 'ListItem', position: 2, name: 'Каталог', item: 'https://luverano.ru/catalog' },
             { '@type': 'ListItem', position: 3, name: product.title, item: `https://luverano.ru/product/${productToSlug(product.id, product.title)}` }
         ]
     }

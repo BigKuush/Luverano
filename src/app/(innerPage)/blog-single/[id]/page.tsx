@@ -9,7 +9,7 @@ import { getBlogData } from '@/lib/data'
 import Trends2025Article from '../trends2025Article'
 import CarePremiumArticle from '../carePremiumArticle'
 
-type Props = { params: { id: string } }
+type Props = { params: Promise<{ id: string }> }
 
 export const dynamicParams = true
 
@@ -18,9 +18,10 @@ export async function generateStaticParams() {
   return blogs.map(b => ({ id: String(b.id) }))
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const resolvedParams = await params
   const blogs = await getBlogData()
-  const post = blogs.find(b => String(b.id) === String(params.id))
+  const post = blogs.find(b => String(b.id) === String(resolvedParams.id))
   if (!post) return {}
 
   if (String(post.id) === '2') {
@@ -59,8 +60,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 
 const BlogSingleById = async ({ params }: Props) => {
+  const resolvedParams = await params
   const blogs = await getBlogData()
-  const post = blogs.find(b => String(b.id) === String(params.id))
+  const post = blogs.find(b => String(b.id) === String(resolvedParams.id))
   if (!post) return notFound()
 
   return (

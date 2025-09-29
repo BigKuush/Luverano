@@ -98,7 +98,7 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                 </PhotoProvider>
             </div>
             <div className='mt-2 flex gap-3 items-center'>
-                <Swiper
+            <Swiper
                     slidesPerView={5}
                     spaceBetween={14}
                     freeMode={false}
@@ -178,7 +178,7 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                         )
                     })
                 }
-                </Swiper>
+            </Swiper>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Card, { CardFooter, CardHeader, CardIcons, CardImg, CardTitle, CardPriceEnhanced, CardLabel, CardDiscount } from "@/components/ui/card";
 import Title from "@/components/ui/title";
 import Link from "next/link";
+import { productToSlug } from '@/lib/slug'
 import { ProductType } from "@/types/productType";
 import { getProductsData } from "@/lib/data";
 
@@ -20,7 +21,7 @@ const FeaturedProducts = async () => {
                     <div className="flex justify-between items-center mb-5">
                         <div />
                         <Link
-                            href={"/shop-3"}
+                            href={"/catalog"}
                             className="text-gray-1-foreground lg:text-xl text-lg border-b border-b-primary mt-2.5 md:mt-0 inline-block hover:border-b-primary hover:text-secondary-foreground duration-500"
                             style={{ fontSize: '18px', lineHeight: '1.4' }}
                         >
@@ -32,13 +33,13 @@ const FeaturedProducts = async () => {
                         {featuredProducts.filter((p) => p.label === 'Популярное').map((prd) => (
                             <Card key={prd.id}>
                                 <CardHeader>
-                                    <CardImg src={prd.thumbnail} height={260} width={300} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} fit='contain' />
+                                    <CardImg src={prd.thumbnail} height={260} width={300} href={`/product/${productToSlug(prd.id, prd.title)}`} alt={`${prd.title} — фото`} fit='contain' />
                                     {/* label скрываем: не рендерим, если не нужен */}
                                     <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                     <CardIcons product={prd} />
                                 </CardHeader>
                                 <CardFooter>
-                                    <CardTitle path={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`}>{prd.title}</CardTitle>
+                                    <CardTitle path={`/product/${productToSlug(prd.id, prd.title)}`}>{prd.title}</CardTitle>
                                     <CardPriceEnhanced price={prd.price} discountPercentage={prd.discountPercentage} />
                                 </CardFooter>
                             </Card>

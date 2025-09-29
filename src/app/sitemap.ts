@@ -7,7 +7,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   
   // Используем локальные данные напрямую для статической генерации
   const { featuredProducts, topCollections } = products
-  const merged = [...(topCollections||[]), ...(featuredProducts||[])]
+  const allProducts = [...(topCollections||[]), ...(featuredProducts||[])]
+  const merged = allProducts.filter((product, index, self) => 
+    index === self.findIndex(p => p.id === product.id)
+  )
 
   // Статические страницы
   const staticPages = [
@@ -18,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}/shop-3`,
+      url: `${baseUrl}/catalog`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.9,
@@ -51,7 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Страницы товаров
   const productPages = merged.map((product: any) => ({
-    url: `${baseUrl}/product/${String(product.title).toLowerCase().replace(/\s+/g,'-')}`,
+    url: `${baseUrl}/catalog/komplekty/${String(product.title).toLowerCase().replace(/\s+/g,'-')}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -72,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     'stoly',
     'stulya'
   ].map((category) => ({
-    url: `${baseUrl}/shop-3?category=${category}`,
+    url: `${baseUrl}/catalog/${category}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,

@@ -36,7 +36,7 @@ const AboutTwo = () => {
                             </ul>
 
                             <Button asChild  size={"medium"} className='lg:mt-[90px] mt-15 lg:py-4 py-3 group max-w-[258px] max-h-[62px]'>
-                                <Link href={"/shop-3"}>
+                                <Link href={"/catalog"}>
                                     Перейти в каталог
                                     <ArrowUp className="group-hover:rotate-45 transition-transform duration-500" />
                                 </Link>

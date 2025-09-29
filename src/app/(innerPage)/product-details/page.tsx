@@ -24,8 +24,11 @@ const ProductDetailsOne = async ({ searchParams }: { searchParams: Promise<{ id?
     const { featuredProducts, topCollections } = await getProductsData() as any
     const all = Array.isArray(featuredProducts) && featuredProducts.length ? featuredProducts : []
     const extras = Array.isArray(topCollections) && topCollections.length ? topCollections : []
-    // Предпочитаем элементы из topCollections (в них у нас есть summary и расширенные поля)
-    const merged = [...extras, ...all]
+    // Объединяем и убираем дубликаты по id
+    const allProducts = [...extras, ...all]
+    const merged = allProducts.filter((product, index, self) => 
+        index === self.findIndex(p => p.id === product.id)
+    )
     const product = merged.find((p: any) => Number(p.id) === numericId) || merged[0]
 
     return (

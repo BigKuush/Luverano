@@ -60,7 +60,7 @@ export const PremiumCard = ({ product, className }: PremiumCardProps) => {
             <div className="p-4">
                 {/* Категория */}
                 <Link 
-                    href={`/shop/${product.category?.toLowerCase()}`}
+                    href={`/catalog/${product.category?.toLowerCase()}`}
                     className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
                 >
                     {product.category}

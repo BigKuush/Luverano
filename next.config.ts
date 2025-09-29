@@ -3,6 +3,7 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -18,6 +19,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  assetPrefix: '',
+  trailingSlash: false,
+  output: 'standalone',
   experimental: {
     // missingSuspenseWithCSRBailout: false,
     optimizePackageImports: [

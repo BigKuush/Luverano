@@ -35,19 +35,19 @@ const colors = ["#1A1A19", "#D9D9D9", "#96532A", "#0000001A", "#FFA34E", "#FBDBA
 
 const bestProducts = [
     {
-        "id": 1,
+        "id": 101,
         "thumbnail": "/images/sidebar/img-1.webp",
         "title": "Комплект Blossom-6",
         "price": 485000
     },
     {
-        "id": 2,
+        "id": 102,
         "thumbnail": "/images/sidebar/img-2.webp",
         "title": "Кресло Verona",
         "price": 125000
     },
     {
-        "id": 3,
+        "id": 103,
         "thumbnail": "/images/sidebar/img-3.webp",
         "title": "Стол Toscana",
         "price": 195000
@@ -72,7 +72,7 @@ const ShopSidebar = ({ isSidebarCategoryHide }: { isSidebarCategoryHide?: boolea
                         <ul className='mt-5 flex flex-col gap-2.5'>
                             {categoriesDataSidebar.map(({ categoryName, id, value }) => (
                                 <li key={id}>
-                                    <Link href={`/shop-3?category=${value}`} className='text-gray-1-foreground text-base leading-[162%] hover:text-primary-foreground transition-all duration-500'>
+                                    <Link href={`/catalog`} className='text-gray-1-foreground text-base leading-[162%] hover:text-primary-foreground transition-all duration-500'>
                                         {categoryName}
                                     </Link>
                                 </li>

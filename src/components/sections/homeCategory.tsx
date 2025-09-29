@@ -65,7 +65,7 @@ const HomeCategory = ({ categories }: { categories: CategoryType[] }) => {
                             <SwiperSlide key={id}>
                                 <div className="text-center">
                                     <Link
-                                        href={`/shop-3?category=${categoryName.toLowerCase()}`}
+                                        href={`/catalog`}
                                         className="block max-h-[400px] overflow-hidden mb-5 rounded-[15px]"
                                     >
                                         <Image
@@ -78,7 +78,7 @@ const HomeCategory = ({ categories }: { categories: CategoryType[] }) => {
                                         />
                                     </Link>
                                     <Link
-                                        href={`/shop-3?category=${categoryName.toLowerCase()}`}
+                                        href={`/catalog`}
                                         className="font-medium leading-[181.818%] lg:text-[22px] text-lg text-gray-1-foreground capitalize hover:text-secondary-foreground transition-all duration-500"
                                     >
                                         {categoryName}

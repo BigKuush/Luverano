@@ -4,8 +4,7 @@ interface ProductsType {
     topCollections: ProductType[];
     featuredProducts: ProductType[]
 }
-export const products: ProductsType = {
-    topCollections: [
+const topCollections: ProductType[] = [
         {
             "id": 1,
             "title": "Valiente",
@@ -37,7 +36,8 @@ export const products: ProductsType = {
                 "/images/kits/valiente/4.jpg",
                 "/images/kits/valiente/5.jpg",
                 "/images/kits/valiente/6.jpg",
-                "/images/kits/valiente/7.jpg"
+                "/images/kits/valiente/7.jpg",
+                "/images/kits/valiente/8.jpg"
             ]
         },
         {
@@ -78,7 +78,8 @@ export const products: ProductsType = {
                 "/images/kits/montoro/7.jpg",
                 "/images/kits/montoro/8.jpg",
                 "/images/kits/montoro/9.jpg",
-                "/images/kits/montoro/10.jpg"
+                "/images/kits/montoro/10.jpg",
+                "/images/kits/montoro/11.jpg"
             ]
         },
         {
@@ -115,7 +116,8 @@ export const products: ProductsType = {
                 "/images/kits/fortuna/3.jpg",
                 "/images/kits/fortuna/4.jpg",
                 "/images/kits/fortuna/5.jpg",
-                "/images/kits/fortuna/6.jpg"
+                "/images/kits/fortuna/6.jpg",
+                "/images/kits/fortuna/7.jpg"
             ]
         },
         {
@@ -154,7 +156,8 @@ export const products: ProductsType = {
                 "/images/kits/calma/5.jpg",
                 "/images/kits/calma/6.jpg",
                 "/images/kits/calma/7.jpg",
-                "/images/kits/calma/8.jpg"
+                "/images/kits/calma/8.jpg",
+                "/images/kits/calma/9.jpg"
             ]
         },
         {
@@ -192,7 +195,8 @@ export const products: ProductsType = {
                 "/images/kits/serena/4.jpg",
                 "/images/kits/serena/5.jpg",
                 "/images/kits/serena/6.jpg",
-                "/images/kits/serena/7.jpg"
+                "/images/kits/serena/7.jpg",
+                "/images/kits/serena/8.jpg"
             ]
         },
         {
@@ -230,7 +234,8 @@ export const products: ProductsType = {
                 "/images/kits/costa/4.jpg",
                 "/images/kits/costa/5.jpg",
                 "/images/kits/costa/6.jpg",
-                "/images/kits/costa/7.jpg"
+                "/images/kits/costa/7.jpg",
+                "/images/kits/costa/8.jpg"
             ]
         },
         {
@@ -267,7 +272,8 @@ export const products: ProductsType = {
                 "/images/kits/valencia/3.jpg",
                 "/images/kits/valencia/4.jpg",
                 "/images/kits/valencia/5.jpg",
-                "/images/kits/valencia/6.jpg"
+                "/images/kits/valencia/6.jpg",
+                "/images/kits/valencia/7.jpg"
             ]
         },
         {
@@ -304,275 +310,16 @@ export const products: ProductsType = {
                 "/images/kits/sonata/3.jpg",
                 "/images/kits/sonata/4.jpg",
                 "/images/kits/sonata/5.jpg",
-                "/images/kits/sonata/6.jpg"
+                "/images/kits/sonata/6.jpg",
+                "/images/kits/sonata/7.jpg"
             ]
         },
-    ],
-    featuredProducts: [
-        {
-            "id": 1,
-            "title": "Valiente",
-            "summary": "Комплект садовой мебели Valiente создан для тех, кто ценит атмосферу уюта и гостеприимства на открытом воздухе. Шесть эргономичных кресел с мягкими подушками и круглый стол со встроенной горелкой превращают террасу или сад в пространство для общения и отдыха.",
-            "description": "Комплект садовой мебели Valiente создан для тех, кто ценит атмосферу уюта и гостеприимства на открытом воздухе. Шесть эргономичных кресел с мягкими подушками и круглый стол со встроенной горелкой превращают террасу или сад в пространство для общения и отдыха.\n\nValiente сочетает современный дизайн и функциональность. Очаг в центре стола дарит мягкое сияние и тепло прохладными вечерами, а при необходимости поверхность легко превращается в полноценный обеденный стол с помощью удобной крышки. Конструкция устойчива к влаге, солнечным лучам и перепадам температур, что делает комплект практичным выбором для загородного дома.\n\nПреимущества комплекта Valiente\n- Современный премиальный дизайн для террасы, веранды или сада\n- Просторный комплект на 6 человек — удобно для семьи и гостей\n- Круглый стол с огненной вставкой и крышкой для универсального использования\n- Долговечные материалы ручной работы, устойчивые к коррозии\n- Подушки из современных наполнителей, сохраняющие форму и комфорт\n\nМатериалы и характеристики\n- Кресла (6 шт.): размер 66×62,5×92,6 см, каркас из литого и экструдированного алюминия\n- Обивка кресел: ткань 100% олефин плотностью 435 г/м², устойчива к влаге и выгоранию\n- Подушки: губка 33D с хлопковой прослойкой и нетканой подкладкой, для мягкости и долговечности\n- Стол: круглый, размер 137×137×74 см, выполнен из экструдированного алюминия, подходит для использования как в помещении, так и на улице\n\nКомплектация\n- Круглый стол с огненной вставкой и крышкой (137×137×74 см)\n- 6 кресел с подушками (66×62,5×92,6 см)\n- Чехол для хранения мебели\n\nКомплект Valiente — это не просто мебель, а пространство, которое объединяет. Он создаёт атмосферу тепла и уюта, приглашая проводить вечера с семьёй и друзьями и наслаждаться каждым мгновением на свежем воздухе",
-            "price": 1091070,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "12",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Популярное",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/valiente/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#96532A",
-                    "image": ""
-                }
-            ],
-            "filter": "Популярное",
-            "videoUrl": "https://vkvideo.ru/video-51272271_456239031", // Calma
-            "images": [
-                "/images/kits/valiente/1.jpg",
-                "/images/kits/valiente/2.jpg",
-                "/images/kits/valiente/3.jpg",
-                "/images/kits/valiente/4.jpg",
-                "/images/kits/valiente/5.jpg",
-                "/images/kits/valiente/6.jpg",
-                "/images/kits/valiente/7.jpg"
-            ]
-        },
-        {
-            "id": 2,
-            "title": "Montoro",
-            "videoUrl": "https://vk.com/video-51272271_456239026", // Montoro
-            "summary": "Комплект садовой мебели Montoro создан для просторных террас, загородных домов и уютных садов, где всегда приятно собираться большой компанией. В набор входят шесть удобных стульев, два кресла с мягкими подушками и большой прямоугольный стол со встроенной горелкой. Такой ансамбль превращает любое открытое пространство в место встреч, праздников и тёплых ужинов под звёздами.",
-            "description": "Роскошный комплект для загородного дома",
-            "price": 1470210,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "8",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Новинка",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/montoro/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#8B4513",
-                    "image": ""
-                }
-            ],
-            "filter": "Новинки",
-            "images": [
-                "/images/kits/montoro/1.jpg",
-                "/images/kits/montoro/2.jpg",
-                "/images/kits/montoro/3.jpg",
-                "/images/kits/montoro/4.jpg",
-                "/images/kits/montoro/5.jpg",
-                "/images/kits/montoro/6.jpg",
-                "/images/kits/montoro/7.jpg",
-                "/images/kits/montoro/8.jpg",
-                "/images/kits/montoro/9.jpg",
-                "/images/kits/montoro/10.jpg"
-            ]
-        },
-        {
-            "id": 3,
-            "title": "Fortuna",
-            "summary": "Комплект садовой мебели Fortuna создан для тех, кто ценит атмосферу уюта и стиля на открытом воздухе. Четыре просторных кресла с мягкими подушками и элегантный стол делают его идеальным решением для террасы, сада или загородного дома.",
-            "description": "Элегантный комплект для веранды",
-            "price": 1370440,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "6",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Популярное",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/fortuna/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#A0522D",
-                    "image": ""
-                }
-            ],
-            "filter": "Популярное",
-            "videoUrl": "https://vkvideo.ru/video-51272271_456239027", // Sonata
-            "images": [
-                "/images/kits/fortuna/1.jpg",
-                "/images/kits/fortuna/2.jpg",
-                "/images/kits/fortuna/3.jpg",
-                "/images/kits/fortuna/4.jpg",
-                "/images/kits/fortuna/5.jpg",
-                "/images/kits/fortuna/6.jpg"
-            ]
-        },
-        {
-            "id": 4,
-            "title": "Calma",
-            "videoUrl": "https://vkvideo.ru/video-51272271_456239030", // Serena
-            "summary": "Комплект садовой мебели Calma — это новинка в России, созданная вручную из прочного Rope диаметром 3 см. Широкий диван, два изысканных кресла и стильный стол образуют гармоничное пространство для отдыха.",
-            "description": "Спокойный и уютный комплект для отдыха",
-            "price": 1820260,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "4",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Премиум",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/calma/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#D2B48C",
-                    "image": ""
-                }
-            ],
-            "filter": "Избранное",
-            "images": [
-                "/images/kits/calma/1.jpg",
-                "/images/kits/calma/2.jpg",
-                "/images/kits/calma/3.jpg",
-                "/images/kits/calma/4.jpg",
-                "/images/kits/calma/5.jpg",
-                "/images/kits/calma/6.jpg",
-                "/images/kits/calma/7.jpg",
-                "/images/kits/calma/8.jpg"
-            ]
-        },
-        {
-            "id": 5,
-            "title": "Serena",
-            "summary": "Комплект садовой мебели Serena станет элегантным акцентом вашей террасы или сада. В его состав входят четыре просторных кресла с мягкими подушками и круглый стол со встроенной горелкой, который создаёт атмосферу уюта и гармонии.",
-            "description": "Серьезный и надежный комплект",
-            "price": 1210910,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "7",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Популярное",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/serena/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#CD853F",
-                    "image": ""
-                }
-            ],
-            "filter": "Популярное",
-            "videoUrl": "https://vkvideo.ru/video-51272271_456239028", // Valencia
-            "images": [
-                "/images/kits/serena/1.jpg",
-                "/images/kits/serena/2.jpg",
-                "/images/kits/serena/3.jpg",
-                "/images/kits/serena/4.jpg",
-                "/images/kits/serena/5.jpg",
-                "/images/kits/serena/6.jpg",
-                "/images/kits/serena/7.jpg"
-            ]
-        },
-        {
-            "id": 6,
-            "title": "Costa",
-            "summary": "Комплект садовой мебели Costa создан для тех, кто ценит стиль, комфорт и уют на свежем воздухе. В набор входят четыре просторных кресла с мягкими подушками и круглый стол со встроенной горелкой.",
-            "description": "Прибрежный стиль для террасы",
-            "price": 1160180,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "5",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Новинка",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/costa/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#F4A460",
-                    "image": ""
-                }
-            ],
-            "filter": "Новинки",
-            "videoUrl": "https://vkvideo.ru/video-51272271_456239029", // Costa
-            "images": [
-                "/images/kits/costa/1.jpg",
-                "/images/kits/costa/2.jpg",
-                "/images/kits/costa/3.jpg",
-                "/images/kits/costa/4.jpg",
-                "/images/kits/costa/5.jpg",
-                "/images/kits/costa/6.jpg",
-                "/images/kits/costa/7.jpg"
-            ]
-        },
-        {
-            "id": 7,
-            "title": "Valencia",
-            "summary": "Комплект садовой мебели Valencia — это сочетание элегантности, уюта и функциональности: просторный диван, два удобных кресла и круглый стол с огненной вставкой для атмосферных вечеров.",
-            "description": "Испанский стиль для сада",
-            "price": 1360120,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "9",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Популярное",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/valencia/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#DEB887",
-                    "image": ""
-                }
-            ],
-            "filter": "Популярное",
-            "videoUrl": "https://vk.com/video-51272271_456239028", // Valencia
-            "images": [
-                "/images/kits/valencia/1.jpg",
-                "/images/kits/valencia/2.jpg",
-                "/images/kits/valencia/3.jpg",
-                "/images/kits/valencia/4.jpg",
-                "/images/kits/valencia/5.jpg",
-                "/images/kits/valencia/6.jpg"
-            ]
-        },
-        {
-            "id": 8,
-            "title": "Sonata",
-            "summary": "Комплект садовой мебели Sonata создан для тех, кто ценит гармонию стиля и уюта: четыре элегантных кресла и квадратный стол со встроенной огненной вставкой для атмосферных вечеров.",
-            "description": "Музыкальный ритм в дизайне",
-            "price": 1140760,
-            "currency": "RUB",
-            "discountPercentage": 0,
-            "rating": 5,
-            "totalRating": "6",
-            "stock": 5,
-            "brand": "Luverano",
-            "label": "Новинка",
-            "category": "Комплекты",
-            "thumbnail": "/images/kits/sonata/1.jpg?v=1",
-            "colors": [
-                {
-                    "code": "#BC8F8F",
-                    "image": ""
-                }
-            ],
-            "filter": "Новинки",
-            "videoUrl": "https://vk.com/video-51272271_456239025", // Valiente
-            "images": [
-                "/images/kits/sonata/1.jpg",
-                "/images/kits/sonata/2.jpg",
-                "/images/kits/sonata/3.jpg",
-                "/images/kits/sonata/4.jpg",
-                "/images/kits/sonata/5.jpg",
-                "/images/kits/sonata/6.jpg"
-            ]
-        }
-    ]
+];
+
+// Создаем копию массива для featuredProducts, чтобы избежать дубликатов
+const featuredProducts = [...topCollections]
+
+export const products: ProductsType = {
+    topCollections,
+    featuredProducts
 }

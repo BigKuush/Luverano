@@ -63,7 +63,7 @@ const ProductsCartTable = () => {
                     <Button  className="lg:px-6 px-4 lg:py-3 lg:text-lg">Применить</Button>
                 </div>
                 <Button variant={"outline"} asChild className='lg:px-6 lg:py-3 lg:text-lg'>
-                    <Link href={"/shop-3"}>Продолжить покупки</Link>
+                    <Link href={"/catalog"}>Продолжить покупки</Link>
                 </Button>
             </div>
         </div>

@@ -13,7 +13,7 @@ Disallow: /login/
 
 # Allow important pages
 Allow: /
-Allow: /shop-3
+Allow: /catalog
 Allow: /blog
 Allow: /product-details
 Allow: /about

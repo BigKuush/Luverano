@@ -58,7 +58,7 @@ export const getPageMetadata = (page: string, data?: any) => {
       title: "Каталог мебели - Luverano",
       description: "Каталог премиальной мебели Luverano. Комплекты, кресла, столы, стулья для загородного дома.",
       keywords: ["каталог мебели", "мебель для дома", "комплекты мебели", "кресла", "столы", "стулья"],
-      canonical: `${baseUrl}/shop-3`
+      canonical: `${baseUrl}/catalog`
     },
     product: {
       title: `${data?.title || 'Товар'} - Luverano`,
@@ -86,7 +86,7 @@ export const getOpenGraphTags = (page: string, data?: any) => {
     'og:title': metadata.title,
     'og:description': metadata.description,
     'og:url': metadata.canonical,
-    'og:type': page === 'product' ? 'product' : 'website',
+    'og:type': 'website',
     'og:image': data?.thumbnail || `${baseUrl}/images/og-image.jpg`,
     'og:site_name': 'Luverano',
     'og:locale': 'ru_RU'

@@ -4,6 +4,8 @@ import { productToSlug } from '@/lib/slug'
 
 export function middleware(req: NextRequest) {
   const { pathname, searchParams } = new URL(req.url)
+  
+  // Редирект с /product-details на /product/slug
   if (pathname === '/product-details') {
     const id = searchParams.get('id') || '1'
     const all = [...products.topCollections, ...products.featuredProducts]
@@ -11,6 +13,8 @@ export function middleware(req: NextRequest) {
     const slug = prod ? productToSlug(prod.id, prod.title) : String(id)
     return NextResponse.redirect(new URL(`/product/${slug}`, req.url), 308)
   }
+  
+  
   return NextResponse.next()
 }
 

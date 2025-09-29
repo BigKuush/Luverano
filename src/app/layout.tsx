@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon-l.svg?v=1', type: 'image/svg+xml' },
+      { url: '/favicon.svg?v=1', type: 'image/svg+xml' },
     ],
-    shortcut: ['/favicon-l.svg?v=1']
+    shortcut: ['/favicon.svg?v=1']
   },
 };
 
@@ -69,6 +69,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

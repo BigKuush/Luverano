@@ -80,7 +80,7 @@ const Hero = ({ data }: { data: HeroDataType[] }) => {
                                                 size={"medium"}
                                                 className="mt-10 max-w-[188px] lg:leading-[170%] leading-[170%] group"
                                             >
-                                                <Link href={"/shop-3"}>
+                                                <Link href={"/catalog"}>
                                                     В каталог{" "}
                                                     <ArrowUp className="group-hover:rotate-45 transition-transform duration-500" />{" "}
                                                 </Link>

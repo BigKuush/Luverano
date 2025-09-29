@@ -34,7 +34,7 @@ export const menuList: menuType[] = [
     {
         id: 2,
         label: "Каталог",
-        path: "/shop-3?category=komplekty",
+        path: "/catalog",
     },
     {
         id: 3,

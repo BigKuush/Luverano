@@ -2,6 +2,7 @@ import Card, { CardDiscount, CardFooter, CardHeader, CardIcons, CardImg, CardLab
 import { getProductsData } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { ProductType } from '@/types/productType';
+import { productToSlug } from '@/lib/slug';
 
 const RelatedProducts = async ({ className, excludeId }: { className?: string; excludeId?: string | number }) => {
     const { featuredProducts }: { featuredProducts: ProductType[] } = await getProductsData();
@@ -18,13 +19,13 @@ const RelatedProducts = async ({ className, excludeId }: { className?: string; e
                             return (
                                 <Card key={prd.id}>
                                     <CardHeader>
-                                        <CardImg src={prd.thumbnail} height={280} width={420} href={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`} alt={`${prd.title} — фото`} fit='contain' />
+                                        <CardImg src={prd.thumbnail} height={280} width={420} href={`/product/${productToSlug(prd.id, prd.title)}`} alt={`${prd.title} — фото`} fit='contain' />
                                         {/* label скрываем: не рендерим */}
                                         <CardDiscount isDiscountTrue={prd.discountPercentage ? prd.discountPercentage : false}>-{prd.discountPercentage}%</CardDiscount>
                                         <CardIcons product={prd} />
                                     </CardHeader>
                                     <CardFooter>
-                                        <CardTitle path={`/product/${encodeURIComponent(String(prd.title).toLowerCase().replace(/\s+/g,'-'))}`}>{prd.title}</CardTitle>
+                                        <CardTitle path={`/product/${productToSlug(prd.id, prd.title)}`}>{prd.title}</CardTitle>
                                         <CardPriceEnhanced price={prd.price} discountPercentage={prd.discountPercentage} />
                                     </CardFooter>
                                 </Card>

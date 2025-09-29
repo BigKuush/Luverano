@@ -11,7 +11,7 @@ const Checkout = () => {
       <PageHeader 
           currentPage='Оформление заказа' 
           pageTitle='Оформление заказа' 
-          breadcrumbLink='/shop-3' 
+          breadcrumbLink='/catalog' 
           breadcrumbLabel='Каталог'
           bgImageUrl='/images/kits/calma/1.jpg'
       />
