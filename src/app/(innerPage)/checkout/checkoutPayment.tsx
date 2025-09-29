@@ -1,12 +1,12 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
+import { RadioGroup, RadioGroupItem } from '../../../components/ui/radio-group'
+import { Label } from '../../../components/ui/label'
+import { Button } from '../../../components/ui/button'
 import Link from 'next/link'
-import { useAppDispatch, useAppSelector } from '@/lib/reduxHooks'
-import { setShippingType } from '@/lib/features/OrderSlice'
+import { useAppDispatch, useAppSelector } from '../../../lib/reduxHooks'
+import { setShippingType } from '../../../lib/features/OrderSlice'
 
 const CheckoutPayment = () => {
     const dispatch = useAppDispatch()

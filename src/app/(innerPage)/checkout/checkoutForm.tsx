@@ -1,9 +1,9 @@
 "use client"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
-import { useAppSelector } from '@/lib/reduxHooks'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from '../../../components/ui/select'
+import { Input } from '../../../components/ui/input'
+import { Textarea } from '../../../components/ui/textarea'
+import { Button } from '../../../components/ui/button'
+import { useAppSelector } from '../../../lib/reduxHooks'
 import toast from 'react-hot-toast'
 
 
