@@ -2,16 +2,16 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Close, Eye } from '@/lib/icon'
-import { Button } from '@/components/ui/button'
-import ProductQuickView, { ProductQuickViewType } from '@/components/sections/shopDetails/productQuickView'
-import calcluteDiscount from '@/lib/calcluteDiscount'
+import { Close, Eye } from '../../../lib/icon'
+import { Button } from '../../../components/ui/button'
+import ProductQuickView, { ProductQuickViewType } from '../../../components/sections/shopDetails/productQuickView'
+import calcluteDiscount from '../../../lib/calcluteDiscount'
 import currencyFormatter from 'currency-formatter';
-import { useAppDispatch, useAppSelector } from '@/lib/reduxHooks'
-import { addToCart } from '@/lib/features/AddToCartSlice'
-import { ProductShortInfoPropsType } from '@/components/sections/shopDetails/productShortInfo'
+import { useAppDispatch, useAppSelector } from '../../../lib/reduxHooks'
+import { addToCart } from '../../../lib/features/AddToCartSlice'
+import { ProductShortInfoPropsType } from '../../../components/sections/shopDetails/productShortInfo'
 import { useDispatch } from 'react-redux'
-import { removeToCompare } from '@/lib/features/CompareProductsSlice'
+import { removeToCompare } from '../../../lib/features/CompareProductsSlice'
 
 const CompareTable = () => {
     const products = useAppSelector((data) => data.productCompare.products)
