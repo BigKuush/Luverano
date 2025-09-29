@@ -43,9 +43,7 @@ const nextConfig: NextConfig = {
     // missingSuspenseWithCSRBailout: false,
     optimizePackageImports: [
       "lucide-react",
-      "@/lib/icon",
-      "@/components/ui",
-      "@/components/sections",
+      // Убираем project-local алиасы из optimizePackageImports, чтобы не ломать билд
     ],
   },
   compiler: {
