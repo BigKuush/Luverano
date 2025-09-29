@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
-import bundleAnalyzer from '@next/bundle-analyzer';
+// bundle analyzer доступен локально как devDependency.
+// На управляемом билд-сервере devDeps могут не ставиться,
+// поэтому подключаем опционально (без него конфиг просто вернётся как есть).
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+let wrapWithAnalyzer: (cfg: any) => any = (cfg: any) => cfg;
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const bundleAnalyzer = require('@next/bundle-analyzer');
+  wrapWithAnalyzer = bundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+  });
+} catch (_err) {
+  // analyzer не установлен – продолжаем без него
+}
 
 const nextConfig: NextConfig = {
   images: {
@@ -40,8 +54,4 @@ const nextConfig: NextConfig = {
 };
 
 
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-});
-
-export default withBundleAnalyzer(nextConfig);
+export default wrapWithAnalyzer(nextConfig);
