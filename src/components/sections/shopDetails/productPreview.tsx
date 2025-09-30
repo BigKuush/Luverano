@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import type { Swiper as TypeSwiper } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -7,8 +7,6 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
 
 import { ChevronLeft, ChevronRight, Expand } from '@/lib/icon';
 
@@ -21,6 +19,9 @@ const defaultImageList = [
 ]
 
 const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[], productTitle?: string, videoUrl?: string }) => {
+    // Избегаем проблем гидратации/несовместимости библиотек на сервере
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => { setMounted(true) }, []);
     const [thumbsSwiper, setThumbsSwiper] = useState<TypeSwiper | null>(null);
     const [mainSwiper, setMainSwiper] = useState<TypeSwiper | null>(null);
     const addVersion = (src: string) => src.includes('?') ? src : `${src}?v=1`;
@@ -37,65 +38,52 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
         }
     }
 
+    if (!mounted) return null;
+
     return (
         <div>
             <div>
-                <PhotoProvider maskOpacity={0.8} photoClassName='bg-transparent'>
-                    <Swiper
-                        onSwiper={setMainSwiper}
-                        // className='relative'
-                        navigation={{
-                            nextEl: ".next-arrow",
-                            prevEl: ".prev-arrow"
-                        }}
-                        loop
-                        autoHeight
-                        thumbs={{ swiper: thumbsSwiper }}
-                        modules={[FreeMode, Navigation, Thumbs]}
-                    >
-                        {
-                            imgeList.map((img, index) => {
-                                return (
-                                    <SwiperSlide key={index} className='relative'>
-                                        <Image 
-                                            width={580} 
-                                            height={560} 
-                                            style={{ width: "100%", height:"auto" }} 
-                                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw' 
-                                            src={img} 
-                                            className='object-contain' 
-                                            alt={`${productTitle || 'Товар'} — фото ${index+1}`}
-                                            priority={index === 0}
-                                            loading={index === 0 ? 'eager' : 'lazy'}
-                                            placeholder="blur"
-                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                                        />
-                                        <PhotoView src={img}>
-                                            <div className='text-gray-1-foreground absolute top-5 right-5 cursor-pointer'><Expand /></div>
-                                        </PhotoView>
-                                    </SwiperSlide>
-                                )
-                            })
-                        }
-                        {vkEmbedSrc ? (
-                            <SwiperSlide className='relative'>
-                                <div className='relative w-full' style={{ paddingTop: '56.25%' }}>
-                                    <iframe
-                                        src={vkEmbedSrc}
-                                        className='absolute inset-0 w-full h-full'
-                                        frameBorder={0}
-                                        allow="autoplay; fullscreen"
-                                        allowFullScreen
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        ) : null}
-                        <div className='z-20 absolute top-1/2 -translate-y-1/2 w-full flex justify-between'>
-                            <div className='prev-arrow text-[#807E7D] cursor-pointer'><ChevronLeft className='size-10' strokeWidth='1.5' /></div>
-                            <div className='next-arrow text-[#807E7D] cursor-pointer'><ChevronRight className='size-10' strokeWidth='1.5' /></div>
-                        </div>
-                    </Swiper>
-                </PhotoProvider>
+                <Swiper
+                    onSwiper={setMainSwiper}
+                    navigation={{ nextEl: ".next-arrow", prevEl: ".prev-arrow" }}
+                    loop
+                    autoHeight
+                    thumbs={{ swiper: thumbsSwiper }}
+                    modules={[FreeMode, Navigation, Thumbs]}
+                >
+                    {imgeList.map((img, index) => (
+                        <SwiperSlide key={index} className='relative'>
+                            <Image
+                                width={580}
+                                height={560}
+                                style={{ width: "100%", height: "auto" }}
+                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw'
+                                src={img}
+                                className='object-contain'
+                                alt={`${productTitle || 'Товар'} — фото ${index + 1}`}
+                                priority={index === 0}
+                                loading={index === 0 ? 'eager' : 'lazy'}
+                            />
+                        </SwiperSlide>
+                    ))}
+                    {vkEmbedSrc ? (
+                        <SwiperSlide className='relative'>
+                            <div className='relative w-full' style={{ paddingTop: '56.25%' }}>
+                                <iframe
+                                    src={vkEmbedSrc}
+                                    className='absolute inset-0 w-full h-full'
+                                    frameBorder={0}
+                                    allow="autoplay; fullscreen"
+                                    allowFullScreen
+                                />
+                            </div>
+                        </SwiperSlide>
+                    ) : null}
+                    <div className='z-20 absolute top-1/2 -translate-y-1/2 w-full flex justify-between'>
+                        <div className='prev-arrow text-[#807E7D] cursor-pointer'><ChevronLeft className='size-10' strokeWidth='1.5' /></div>
+                        <div className='next-arrow text-[#807E7D] cursor-pointer'><ChevronRight className='size-10' strokeWidth='1.5' /></div>
+                    </div>
+                </Swiper>
             </div>
             <div className='mt-2 flex gap-3 items-center'>
             <Swiper
@@ -128,13 +116,13 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                                             placeholder="blur"
                                             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                                         />
-                                        <div className='absolute inset-0 flex items-center justify-center'>
-                                            <span className='w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow'>
-                                                <svg className='w-4 h-4 text-gray-800 ml-[1px]' fill='currentColor' viewBox='0 0 24 24'>
-                                                    <path d='M8 5v14l11-7z'/>
-                                                </svg>
-                                            </span>
-                                        </div>
+                                    <div className='absolute inset-0 flex items-center justify-center'>
+                                        <span className='w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow'>
+                                            <svg className='w-4 h-4 text-gray-800 ml-[1px]' fill='currentColor' viewBox='0 0 24 24'>
+                                                <path d='M8 5v14l11-7z'/>
+                                            </svg>
+                                        </span>
+                                    </div>
                                     </div>
                                 </SwiperSlide>
                             )
@@ -156,8 +144,6 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                                             alt={`${productTitle || 'Товар'} — превью ${index+1}`}
                                             className='object-contain w-full h-[96px]'
                                             loading="lazy"
-                                            placeholder="blur"
-                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                                         />
                                     ) : (
                                         <Image 
@@ -169,8 +155,6 @@ const ProductPreview = ({ images, productTitle, videoUrl }: { images?: string[],
                                             alt={`${productTitle || 'Товар'} — превью ${index+1}`}
                                             className='object-cover w-full h-[96px] rounded'
                                             loading="lazy"
-                                            placeholder="blur"
-                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                                         />
                                     )}
                                 </div>
