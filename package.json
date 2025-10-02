@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "IMG_MAX_WIDTH=1280 IMG_QUALITY=72 IMG_FORMATS=webp,avif IMG_CLEANUP=true npm run optimize:images",
     "build": "next build",
     "start": "next start",
     "start:standalone": "node .next/standalone/server.js",
@@ -14,7 +15,8 @@
     "pm2:stop": "pm2 stop luverano",
     "pm2:restart": "pm2 restart luverano",
     "pm2:logs": "pm2 logs luverano",
-    "pm2:status": "pm2 status"
+    "pm2:status": "pm2 status",
+    "optimize:images": "node scripts/optimize-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4",
