@@ -67,7 +67,7 @@ const WishlistProductsTable = () => {
                                                         
                                                         className='lg:py-3 lg:px-6 lg:text-lg'
                                                     >
-                                                        Add To cart
+                                                        В показ
                                                     </Button>
                                                     <p
                                                         onClick={() => dispatch(removeToWishlist(id))}

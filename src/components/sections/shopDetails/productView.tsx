@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { productToSlug } from '@/lib/slug'
 import currencyFormatter from 'currency-formatter';
 import { Eye, Heart, ShopCart, Shuffle } from '@/lib/icon'
+import { reachGoal } from '@/lib/analytics'
 import { Button } from '@/components/ui/button'
 import Tooltip from '@/components/ui/tooltip'
 
@@ -128,10 +129,9 @@ const ProductsView = ({ isCategoryShow, isSortingProductTop, isGridDefaultView, 
                                                         <div className='flex gap-2.5 mt-5'>
                                                             <Button
                                                                 size={"xm"}
-                                                                
-                                                                onClick={() => dispatch(addToCart({ id, thumbnail, quantity: 1, price: finalPrice, color: "red", size: "m", title }))}
+                                                                onClick={() => { dispatch(addToCart({ id, thumbnail, quantity: 1, price: finalPrice, color: "red", size: "m", title })); reachGoal('project_add',{ sku: id }); }}
                                                                 className='px-4 h-9 lg:text-sm'>
-                                                                В корзину
+                                                                В показ
                                                             </Button>
                                                             {/* Удален блок "В избранное" */}
                                                             <Tooltip text={"Быстрый просмотр"} className='bg-primary text-white' arrowCalss='bg-primary'>

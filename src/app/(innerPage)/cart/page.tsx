@@ -7,16 +7,16 @@ import Newsletter from '@/components/sections/newsletter'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "Корзина - Luverano",
-    description: "Просмотрите товары в корзине и оформите заказ."
+    title: "Показ - Luverano",
+    description: "Просмотрите позиции для показа и отправьте заявку в WhatsApp."
 }
 
 const VIewCart = () => {
     return (
         <main>
             <PageHeader 
-                currentPage='Корзина' 
-                pageTitle='Корзина' 
+                currentPage='Показ' 
+                pageTitle='Показ' 
                 breadcrumbLink='/catalog' 
                 breadcrumbLabel='Каталог'
                 bgImageUrl='/images/kits/valiente/1.jpg'

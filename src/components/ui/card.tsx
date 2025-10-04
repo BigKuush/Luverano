@@ -198,7 +198,7 @@ export function CardIcons({ children, className, product }: CardIconsProps) {
       {/* Удалена иконка добавления в избранное */}
 
       {/* Quick view */}
-      <Tooltip text={"Quick view"}>
+      <Tooltip text={"Быстрый просмотр"}>
         <button
           aria-label='Quick'
           onClick={defaultActions?.handleQuickView}
@@ -211,7 +211,7 @@ export function CardIcons({ children, className, product }: CardIconsProps) {
       </Tooltip>
 
       {/* Add to cart */}
-      <Tooltip text={"Add to cart"}>
+      <Tooltip text={"В показ"}>
         <button
           aria-label='cart'
           onClick={defaultActions?.handleAddToCart}

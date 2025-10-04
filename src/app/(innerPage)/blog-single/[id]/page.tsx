@@ -8,6 +8,7 @@ import RelatedBlogs from '../RelatedBlogs'
 import { getBlogData } from '@/lib/data'
 import Trends2025Article from '../trends2025Article'
 import CarePremiumArticle from '../carePremiumArticle'
+// Импортируем динамически, чтобы не тянуть fs в клиентский рантайм при билд-сплите
 
 type Props = { params: Promise<{ id: string }> }
 
@@ -21,7 +22,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const resolvedParams = await params
   const blogs = await getBlogData()
-  const post = blogs.find(b => String(b.id) === String(resolvedParams.id))
+  const { getBlogPostFromFS } = await import('@/lib/blogFs')
+  const fsPost = await getBlogPostFromFS(String(resolvedParams.id))
+  const post = fsPost || blogs.find(b => String(b.id) === String(resolvedParams.id))
   if (!post) return {}
 
   if (String(post.id) === '2') {
@@ -49,11 +52,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   }
 
   return {
-    title: `${post.title} — Luverano`,
-    description: post.description,
+    title: (fsPost?.seoTitle) || `${post.title} — Luverano` ,
+    description: (fsPost?.seoDescription) || post.description,
     openGraph: {
-      title: `${post.title} — Luverano`,
-      description: post.description,
+      title: (fsPost?.seoTitle) || `${post.title} — Luverano`,
+      description: (fsPost?.seoDescription) || post.description,
       type: 'article'
     }
   }
@@ -62,7 +65,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 const BlogSingleById = async ({ params }: Props) => {
   const resolvedParams = await params
   const blogs = await getBlogData()
-  const post = blogs.find(b => String(b.id) === String(resolvedParams.id))
+  const { getBlogPostFromFS } = await import('@/lib/blogFs')
+  const fsPost = await getBlogPostFromFS(String(resolvedParams.id))
+  const post = fsPost || blogs.find(b => String(b.id) === String(resolvedParams.id))
   if (!post) return notFound()
 
   return (
@@ -74,7 +79,14 @@ const BlogSingleById = async ({ params }: Props) => {
         breadcrumbLink='/blog'
         bgImageUrl='/images/kits/fortuna/1.jpg'
       />
-      {String(post.id) === '2' ? <Trends2025Article /> : String(post.id) === '3' ? <CarePremiumArticle /> : <BlogArtical />}
+      {fsPost ? (
+        <article className='container lg:pt-25 pt-15'>
+          {fsPost.thumbnail ? null : null}
+          <div className='prose max-w-none' dangerouslySetInnerHTML={{ __html: fsPost.contentHtml || '' }} />
+        </article>
+      ) : (
+        String(post.id) === '2' ? <Trends2025Article /> : String(post.id) === '3' ? <CarePremiumArticle /> : <BlogArtical />
+      )}
       <RelatedBlogs />
       <Newsletter />
     </main>

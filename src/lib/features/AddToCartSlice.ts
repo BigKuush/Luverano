@@ -47,7 +47,7 @@ const AddToCartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<Product>) => {
-            toast.success('Товар добавлен в корзину');
+            toast.success('Добавлено в показ');
             const itemInCart = state.products.find((item) => item.id === action.payload.id);
             if (itemInCart) {
                 itemInCart.quantity += action.payload.quantity;

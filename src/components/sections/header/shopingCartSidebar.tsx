@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Close, FuShopingBig, Minus, Plus, ShopCart } from '@/lib/icon';
+import { reachGoal } from '@/lib/analytics';
+import { productToSlug } from '@/lib/slug';
 import { Button } from '@/components/ui/button';
 import { useAppDispatch, useAppSelector } from '@/lib/reduxHooks';
 import { cn } from '@/lib/utils';
@@ -20,6 +22,20 @@ const ShopingCartSidebar = () => {
 
   const totalPrice = products.reduce((total, product) => total + product.price * product.quantity, 0);
   const totalProducts = products.reduce((total, product) => total + product.quantity, 0);
+  const handleSendWhatsApp = () => {
+    if (!products.length) {
+      alert('Добавьте позиции в показ');
+      return;
+    }
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://luverano.ru';
+    const itemsText = products.map((p, idx) => `${idx + 1}) ${p.title} (SKU ${p.id}) - ${origin}/product/${productToSlug(p.id, p.title)} - ${p.quantity} шт.`).join('\n');
+    const hasFireTable = products.some(p => /огн|fire/i.test(p.title));
+    const text = `Хочу показ на адресе.\n\nПерки:\n- Бесплатный показ (Москва и МО): Да\n- Подарок: 12 газовых баллонов на год с заменой: ${hasFireTable ? 'Да' : 'Нет'}\n- Доставка/сборка/вывоз упаковки: Да\n\nПозиции:\n${itemsText}`;
+    const url = `https://wa.me/79191038408?text=${encodeURIComponent(text)}`;
+    reachGoal('project_send', { count: products.length });
+    reachGoal('whatsapp_click');
+    window.open(url, '_blank');
+  };
 
   useEffect(() => {
     setOpen(false)
@@ -36,7 +52,7 @@ const ShopingCartSidebar = () => {
         isClient ?
 
           <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger aria-label='shoping-cart' className='text-gray-1-foreground relative'>
+            <SheetTrigger aria-label='showcase' className='text-gray-1-foreground relative' onClick={() => reachGoal('project_open')}>
               <ShopCart className='size-6' />
               {totalProducts > 0 && (
                 <span className='w-[15px] h-[15px] bg-primary rounded-full flex items-center justify-center text-xs text-white absolute -right-[3px] -top-[3px]'>{totalProducts}</span>
@@ -45,7 +61,7 @@ const ShopingCartSidebar = () => {
             <SheetContent className='sm:max-w-[420px] w-full p-0 [&_.close-orginal]:hidden'>
               <SheetHeader className='bg-[#F5F5F5] px-7.5 py-[31px] flex flex-row justify-between items-center space-y-0'>
                 <SheetTitle className='text-secondary-foreground font-inter font-medium uppercase leading-[155%]'>
-                  Корзина{totalProducts > 0 && ` (${totalProducts})`}
+                  Показ{totalProducts > 0 && ` (${totalProducts})`}
                 </SheetTitle>
                 <SheetClose className='text-gray-1-foreground mt-0'>
                   <Close className='lg:w-7.5 lg:h-7.5 w-5 h-5' />
@@ -75,7 +91,7 @@ const ShopingCartSidebar = () => {
                     </div>
                   ))
                 ) : (
-                  <p className='capitalize text-secondary-foreground text-xl'>Корзина пуста</p>
+                  <p className='capitalize text-secondary-foreground text-xl'>Показ пуст</p>
                 )}
               </div>
               <SheetFooter className='absolute bottom-7.5 sm:flex-col bg-background w-full'>
@@ -86,15 +102,14 @@ const ShopingCartSidebar = () => {
                   </p>
                 </div>
                 <div className='px-7.5 pt-7.5'>
-                  <p className='text-gray-1-foreground text-base'>
-                    Бесплатная доставка
-                  </p>
+                  <div className='text-gray-1-foreground text-base space-y-1'>
+                    <p>Частный показ - привезём и продемонстрируем мебель на вашем адресе (Москва и МО).</p>
+                    <p>Для комплектов со столом-очагом: годовой сервис газовых баллонов - 12 плановых замен в течение 12 месяцев.</p>
+                    <p>Доставка и профессиональная сборка.</p>
+                  </div>
                   <div className='mt-10'>
-                    <Button variant={"outline"} size={"sm"} asChild className='w-full py-[11px] lg:text-lg lg:leading-[155%]'>
-                      <Link href={"/cart"}>Просмотр корзины</Link>
-                    </Button>
-                    <Button  size={"sm"} asChild className='w-full py-[11px] lg:text-lg lg:leading-[155%] mt-3'>
-                      <Link href={"/checkout"}>Оформить заказ</Link>
+                    <Button  size={"sm"} className='w-full py-[11px] lg:text-lg lg:leading-[155%] mt-3' onClick={handleSendWhatsApp}>
+                      Оформить показ в WhatsApp
                     </Button>
                   </div>
                 </div>

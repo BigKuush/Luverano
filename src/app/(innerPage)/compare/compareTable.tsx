@@ -62,14 +62,14 @@ const CompareTable = () => {
                                             </div>
                                             <div className={`${index === 0 && "flex items-center"} border-b py-8 px-2.5`}>
                                                 {index === 0 &&
-                                                    <p className='font-medium text-secondary-foreground lg:text-xl text-lg 2xl:w-[280px] lg:w-[200px] w-[160px]'>Add to cart</p>
+                                                    <p className='font-medium text-secondary-foreground lg:text-xl text-lg 2xl:w-[280px] lg:w-[200px] w-[160px]'>В показ</p>
                                                 }
                                                 <Button
                                                     onClick={() => dispatch(addToCart({ id, price: finalPrice, quantity: 1, thumbnail, title, color, size }))}
                                                     
                                                     size={'sm'}
                                                 >
-                                                    Add to Cart
+                                                    В показ
                                                 </Button>
                                             </div>
                                         </div>

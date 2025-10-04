@@ -3,6 +3,7 @@ import { adsData } from "@/db/adsData";
 import { menuList } from "@/db/menuList";
 import { categoriesOneData } from "@/db/categoriesData";
 import { blogData } from "@/db/blogData";
+// Импортируем лениво внутри функции, чтобы не попадать в клиентский бандл
 import { faqData } from "@/db/faqData";
 import { galleryDataOne } from "@/db/galleryData";
 import { partnerData } from "@/db/partnerData";
@@ -55,7 +56,12 @@ export const getCategoriesData = cache(async () => {
 });
 
 export const getBlogData = cache(async () => {
-    // Всегда используем локальные данные для консистентности
+    // Пытаемся прочитать статьи из public/blog; если нет — используем статичный список
+    try {
+        const { getAllBlogMetaFromFS } = await import('./blogFs')
+        const fsBlogs = await getAllBlogMetaFromFS();
+        if (fsBlogs.length) return fsBlogs;
+    } catch {}
     return blogData;
 });
 

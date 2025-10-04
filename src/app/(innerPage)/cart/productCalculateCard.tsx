@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react'
 import Link from 'next/link';
+import { productToSlug } from '@/lib/slug';
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useAppSelector, useAppDispatch } from '@/lib/reduxHooks';
 import { setShippingType } from '@/lib/features/OrderSlice';
+import { reachGoal } from '@/lib/analytics';
 
 const ProductCalculateCard = () => {
     const dispatch = useAppDispatch()
@@ -23,7 +25,7 @@ const ProductCalculateCard = () => {
 
     return (
         <div className='border-primary border px-5 pt-5 pb-7.5 lg:sticky top-0 rounded-lg'>
-            <p className='font-semibold lg:text-2xl text-xl text-secondary-foreground'>Итого в корзине</p>
+            <p className='font-semibold lg:text-2xl text-xl text-secondary-foreground'>Итого в показе</p>
             <div className='mt-7.5 border-b border-b-[#E5E2E1] pb-5'>
                 <div className='flex items-center justify-between'>
                     <p className='lg:text-xl text-lg font-medium text-secondary-foreground'>Подытог</p>
@@ -38,7 +40,7 @@ const ProductCalculateCard = () => {
                 >
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="0" id="free-shipping" aria-label='radio' className='border-primary text-transparent' />
-                        <Label htmlFor="free-shipping" className="text-gray-1-foreground text-base">Бесплатная доставка</Label>
+                        <Label htmlFor="free-shipping" className="text-gray-1-foreground text-base">Бесплатный показ в Москве и МО</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                         <RadioGroupItem value="5000" id="express-shipping" aria-label='radio' className='border-primary text-transparent' />
@@ -57,8 +59,17 @@ const ProductCalculateCard = () => {
                 <p className='lg:text-2xl text-xl font-medium text-secondary-foreground'>Итого</p>
                 <p className='font-bold text-secondary-foreground'>{totalPrice.toFixed(0)} ₽</p>
             </div>
-            <Button asChild className='mt-7.5 w-full lg:text-lg'  size="lg">
-                <Link href={"/checkout"} >Оформить заказ</Link>
+            <Button className='mt-7.5 w-full lg:text-lg'  size="lg" onClick={() => {
+                if (!products.length) { alert('Добавьте позиции в показ'); return; }
+                const origin = typeof window !== 'undefined' ? window.location.origin : 'https://luverano.ru';
+                const itemsText = products.map((p, idx) => `${idx + 1}) ${p.title} (SKU ${p.id}) - ${origin}/product/${productToSlug(p.id, p.title)} - ${p.quantity} шт.`).join('\n');
+                const hasFireTable = products.some(p => /огн|fire/i.test(p.title));
+                const text = `Хочу показ на адресе.\n\nПерки:\n- Бесплатный показ (Москва и МО): Да\n- Подарок: 12 газовых баллонов на год с заменой: ${hasFireTable ? 'Да' : 'Нет'}\n- Доставка/сборка/вывоз упаковки: Да\n\nПозиции:\n${itemsText}`;
+                reachGoal('project_send',{count: products.length});
+                reachGoal('whatsapp_click');
+                window.open(`https://wa.me/79191038408?text=${encodeURIComponent(text)}`, '_blank');
+            }}>
+                Оформить показ в WhatsApp
             </Button>
         </div>
     )

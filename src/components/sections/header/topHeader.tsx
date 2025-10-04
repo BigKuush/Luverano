@@ -20,7 +20,7 @@ const TopHeader = () => {
                         <Separator orientation="vertical" className='bg-gray-1 data-[orientation=vertical]:h-5' />
                         <span className='text-base text-gray-1-foreground block leading-[150%]'>Пн–Пт 09:00–20:00 · Сб–Вс 10:00–19:00</span>
                         <Separator orientation="vertical" className='bg-gray-1 data-[orientation=vertical]:h-5' />
-                        <Link href={"tel:+79154015754"} className='text-base text-gray-1-foreground block leading-[150%] '>+7 (915) 401-57-54</Link>
+                        <Link href={"tel:+79191038408"} className='text-base text-gray-1-foreground block leading-[150%] '>+7 (919) 103-84-08</Link>
                     </div>
                 </div>
             </div>
