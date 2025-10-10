@@ -31,10 +31,34 @@ const ShopingCartSidebar = () => {
     const itemsText = products.map((p, idx) => `${idx + 1}) ${p.title} (SKU ${p.id}) - ${origin}/product/${productToSlug(p.id, p.title)} - ${p.quantity} шт.`).join('\n');
     const hasFireTable = products.some(p => /огн|fire/i.test(p.title));
     const text = `Хочу показ на адресе.\n\nПерки:\n- Бесплатный показ (Москва и МО): Да\n- Подарок: 12 газовых баллонов на год с заменой: ${hasFireTable ? 'Да' : 'Нет'}\n- Доставка/сборка/вывоз упаковки: Да\n\nПозиции:\n${itemsText}`;
-    const url = `https://wa.me/79191038408?text=${encodeURIComponent(text)}`;
+    const phone = '79154015754';
+    const encoded = encodeURIComponent(text);
+    const deepLink = `whatsapp://send?phone=${phone}&text=${encoded}`;
+    const webLink = `https://wa.me/${phone}?text=${encoded}`;
     reachGoal('project_send', { count: products.length });
     reachGoal('whatsapp_click');
-    window.open(url, '_blank');
+    // Пытаемся открыть приложение через скрытый iframe, чтобы НЕ покидать сайт
+    const openViaIframe = () => {
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = deepLink;
+      document.body.appendChild(iframe);
+      setTimeout(() => { try { document.body.removeChild(iframe); } catch {} }, 1500);
+    };
+    const startedAt = Date.now();
+    let blurOccured = false;
+    const handleBlur = () => { blurOccured = true; window.removeEventListener('blur', handleBlur); };
+    window.addEventListener('blur', handleBlur);
+    openViaIframe();
+    // Фолбэк: если приложение не открылось (фокуса не потеряли), предложим Web через 1.5с
+    setTimeout(() => {
+      window.removeEventListener('blur', handleBlur);
+      const opened = blurOccured || document.hidden || !document.hasFocus() || (Date.now() - startedAt) < 1700;
+      if (!opened) {
+        const needWeb = confirm('Если WhatsApp не открылся, открыть WhatsApp Web?');
+        if (needWeb) window.open(webLink, '_blank');
+      }
+    }, 1500);
   };
 
   useEffect(() => {

@@ -25,7 +25,7 @@ const Footer = () => {
                     <div className='basis-[65%] flex items-center justify-end'>
                         <div className='text-right'>
                                                                 <p className='text-[#4F4F59] text-lg mb-2'>
-                                        <a href="tel:+79191038408" className='hover:text-secondary-foreground transition-all duration-500'>+7 (919) 103-84-08</a>
+                                        <a href="tel:+79154015754" className='hover:text-secondary-foreground transition-all duration-500'>+7 (915) 401-57-54</a>
                                         <span className='mx-2'>•</span>
                                         <a href="mailto:info@luverano.ru" className='hover:text-secondary-foreground transition-all duration-500'>info@luverano.ru</a>
                                     </p>

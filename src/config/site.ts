@@ -13,10 +13,7 @@ export const siteConfig = {
             title: "Каталог",
             href: "/catalog",
         },
-        {
-            title: "Блог",
-            href: "/blog",
-        },
+        // Блог скрыт
         {
             title: "О нас",
             href: "/about",

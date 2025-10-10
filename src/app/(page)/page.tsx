@@ -1,11 +1,11 @@
 import React from 'react'
 import { Metadata } from 'next'
-import BlogSlider from '@/components/sections/blogs/blogSlider'
+// import BlogSlider from '@/components/sections/blogs/blogSlider'
 import FeaturedProducts from '@/components/sections/featuredProducts'
 import Newsletter from '@/components/sections/newsletter'
 import Hero from '@/components/sections/hero'
 import AboutTwo from '@/components/sections/aboutTwo'
-import { getBlogData, getHeroData } from '@/lib/data'
+import { getHeroData } from '@/lib/data'
 
 export const metadata: Metadata = {
   title: "Luverano — Премиальная мебель для террасы и загородного дома",
@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 }
 
 const Home = async () => {
-  const blogData = await getBlogData();
   const heroData = await getHeroData()
 
   return (
@@ -40,7 +39,7 @@ const Home = async () => {
           />
         </div>
       </section>
-      <BlogSlider blogs={blogData} />
+      {/* Блог скрыт */}
       <Newsletter />
     </>
   )

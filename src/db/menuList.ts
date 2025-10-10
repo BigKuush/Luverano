@@ -36,9 +36,5 @@ export const menuList: menuType[] = [
         label: "Каталог",
         path: "/catalog",
     },
-    {
-        id: 3,
-        label: "Блог",
-        path: "/blog",
-    }
+    // Блог временно скрыт на продакшене
 ];

@@ -14,7 +14,7 @@ Disallow: /login/
 # Allow important pages
 Allow: /
 Allow: /catalog
-Allow: /blog
+# Блог скрыт
 Allow: /product-details
 Allow: /about
 Allow: /contacts

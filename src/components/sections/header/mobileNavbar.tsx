@@ -21,10 +21,7 @@ const MobileNavbar = () => {
                     <ShopBug className='size-6' />
                     <span className='text-base inline-block mt-0.5'>Каталог</span>
                 </Link>
-                <Link href={"/blog"} className={`flex flex-col items-center ${currrentPathname === "/blog" ? 'text-secondary-foreground' : 'text-gray-1-foreground'}`}>
-                    <User className='size-6' />
-                    <span className='text-base inline-block mt-0.5'>Блог</span>
-                </Link>
+                {/* Блог скрыт */}
             </div>
         </div>
     )

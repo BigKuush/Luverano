@@ -67,7 +67,25 @@ const ProductCalculateCard = () => {
                 const text = `Хочу показ на адресе.\n\nПерки:\n- Бесплатный показ (Москва и МО): Да\n- Подарок: 12 газовых баллонов на год с заменой: ${hasFireTable ? 'Да' : 'Нет'}\n- Доставка/сборка/вывоз упаковки: Да\n\nПозиции:\n${itemsText}`;
                 reachGoal('project_send',{count: products.length});
                 reachGoal('whatsapp_click');
-                window.open(`https://wa.me/79191038408?text=${encodeURIComponent(text)}`, '_blank');
+                const phone = '79154015754';
+                const encoded = encodeURIComponent(text);
+                const deepLink = `whatsapp://send?phone=${phone}&text=${encoded}`;
+                const webLink = `https://wa.me/${phone}?text=${encoded}`;
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = deepLink;
+                document.body.appendChild(iframe);
+                setTimeout(() => { try { document.body.removeChild(iframe); } catch {} }, 1500);
+                let blurOccured = false;
+                const handleBlur = () => { blurOccured = true; window.removeEventListener('blur', handleBlur); };
+                window.addEventListener('blur', handleBlur);
+                setTimeout(() => {
+                    window.removeEventListener('blur', handleBlur);
+                    if (!blurOccured && document.hasFocus()) {
+                        const needWeb = confirm('Если WhatsApp не открылся, открыть WhatsApp Web?');
+                        if (needWeb) window.open(webLink, '_blank');
+                    }
+                }, 1500);
             }}>
                 Оформить показ в WhatsApp
             </Button>
