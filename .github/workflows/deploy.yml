@@ -1,0 +1,58 @@
+name: Deploy to Server (SSH + PM2)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (for metadata only)
+        uses: actions/checkout@v4
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: |
+            ${{ secrets.SSH_KEY }}
+
+      - name: Known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p "${{ secrets.SSH_PORT || '22' }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Deploy over SSH
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          APP_DIR: ${{ secrets.APP_DIR }}
+        run: |
+          set -euo pipefail
+          REMOTE_CMD='set -e; \
+          mkdir -p "$APP_DIR"; cd "$APP_DIR"; \
+          if [ ! -d .git ]; then \
+            git clone --depth=1 "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" .; \
+          else \
+            git fetch --all --prune; \
+          fi; \
+          git reset --hard origin/main; \
+          # Инициализация Node (если используется nvm)
+          export NVM_DIR="$HOME/.nvm"; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" || true; \
+          command -v node >/dev/null || true; \
+          # Зависимости и билд
+          npm ci --include=optional; \
+          npm run build; \
+          # Старт/рестарт через PM2
+          pm2 startOrReload ecosystem.config.cjs --only luverano || pm2 start npm --name luverano -- start; \
+          pm2 save; \
+          pm2 status'
+          ssh -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" "$REMOTE_CMD"
+
+

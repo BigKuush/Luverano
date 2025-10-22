@@ -16,7 +16,7 @@ const TopHeader = () => {
                     <div className='flex items-center gap-5'>
                         <Link href={"mailto:info@luverano.ru"} className='text-base text-gray-1-foreground block leading-[150%] '>info@luverano.ru</Link>
                         <Separator orientation="vertical" className='bg-gray-1 data-[orientation=vertical]:h-5' />
-                        <Link href={"/contacts"} className='text-base text-gray-1-foreground block leading-[150%] '>Москва, рабочий посёлок Заречье, Торговая ул., с2</Link>
+                        <Link href={"/contacts"} className='text-base text-gray-1-foreground block leading-[150%] '>Москва, ТЦ «ЭлитСтрой», Торговая улица 2с, 2 этаж, павильоны К-2, F-3</Link>
                         <Separator orientation="vertical" className='bg-gray-1 data-[orientation=vertical]:h-5' />
                         <span className='text-base text-gray-1-foreground block leading-[150%]'>Пн–Пт 09:00–20:00 · Сб–Вс 10:00–19:00</span>
                         <Separator orientation="vertical" className='bg-gray-1 data-[orientation=vertical]:h-5' />

@@ -30,7 +30,7 @@ const Footer = () => {
                                         <a href="mailto:info@luverano.ru" className='hover:text-secondary-foreground transition-all duration-500'>info@luverano.ru</a>
                                     </p>
                                     <p className='text-[#4F4F59] text-lg'>
-                                        Москва, рабочий посёлок Заречье, Торговая ул., с2
+                                        Москва, ТЦ «ЭлитСтрой», Торговая улица 2с, 2 этаж, павильоны К-2, F-3
                                     </p>
                         </div>
                     </div>
